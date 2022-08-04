@@ -1,4 +1,12 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem 'rails', '~> 6.1.4.6'
+# Specify your gem's dependencies in resource_quotable.gemspec.
+gemspec
+
+group :development do
+  gem 'sqlite3'
+end
+
+# To use a debugger
+# gem 'byebug', group: [:development, :test]
