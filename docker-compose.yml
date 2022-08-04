@@ -4,8 +4,8 @@ services:
     build: .
     # command: ./start_docker_development.sh
     volumes:
-      - .:/myapp
+      - .:/resource_quotable
     environment:
-      BUNDLE_APP_CONFIG: /myapp/.bundle
+      BUNDLE_APP_CONFIG: /resource_quotable/.bundle
     ports:
       - "3000:3000"
