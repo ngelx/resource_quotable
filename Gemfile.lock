@@ -66,6 +66,9 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
+    annotate (3.2.0)
+      activerecord (>= 3.2, < 8.0)
+      rake (>= 10.4, < 14.0)
     ast (2.4.2)
     builder (3.2.4)
     concurrent-ruby (1.1.10)
@@ -190,6 +193,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate
   factory_bot_rails
   resource_quotable!
   rspec-rails

@@ -22,13 +22,16 @@ Gem::Specification.new do |spec|
   spec.metadata['changelog_uri'] = "#{spec.homepage}/CHANGELOG.md"
 
   spec.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'Readme.md', 'Changelog.md']
+  spec.test_files = Dir['spec/**/*']
 
   spec.add_dependency 'rails', '~> 6.1.4', '>= 6.1.4.7'
 
+  spec.add_development_dependency 'annotate'
   spec.add_development_dependency 'factory_bot_rails'
   spec.add_development_dependency 'rspec-rails'
   spec.add_development_dependency 'rubocop'
   spec.add_development_dependency 'rubocop-rails'
   spec.add_development_dependency 'rubocop-rspec'
+
   spec.metadata['rubygems_mfa_required'] = 'true'
 end
