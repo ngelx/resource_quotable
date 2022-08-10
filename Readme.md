@@ -23,6 +23,7 @@ $ gem install resource_quotable
 
 ## Contributing
 
+`docker-sync start`
 `docker-compose build`
 `docker-compose run web bundle install`
 
