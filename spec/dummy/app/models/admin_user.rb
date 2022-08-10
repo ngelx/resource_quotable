@@ -8,4 +8,5 @@
 #  updated_at :datetime         not null
 #
 class AdminUser < ApplicationRecord
+  acts_as_quotable
 end
