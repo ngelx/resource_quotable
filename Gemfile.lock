@@ -80,6 +80,7 @@ GEM
     factory_bot_rails (6.2.0)
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
+    ffaker (2.21.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.12.0)
@@ -195,6 +196,7 @@ PLATFORMS
 DEPENDENCIES
   annotate
   factory_bot_rails
+  ffaker
   resource_quotable!
   rspec-rails
   rubocop
