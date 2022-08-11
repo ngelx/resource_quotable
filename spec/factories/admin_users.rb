@@ -7,6 +7,8 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :admin_user do
     username { FFaker::Internet.user_name }

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 module ResourceQuotable
@@ -7,7 +9,7 @@ module ResourceQuotable
 
       it { is_expected.to have_many(:quota) }
 
-      it { expect(admin_user.quota_for?(action: :create,resource: :some)).to be true }
+      it { expect(admin_user.quota_for?(action: :create, resource: :some)).to be true }
     end
   end
 end

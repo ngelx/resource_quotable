@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 module ResourceQuotable
-  module ActsAsQuotable
+  module ActsAsQuotable # :nodoc:
     extend ActiveSupport::Concern
 
     class_methods do
@@ -9,7 +11,7 @@ module ResourceQuotable
     end
 
     included do
-      def quota_for?(options = { action: nil, resource: nil })
+      def quota_for?(_options = { action: nil, resource: nil })
         # We still need to do something with this.
         true
       end

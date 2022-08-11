@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 ResourceQuotable.user_class = 'AdminUser'
 

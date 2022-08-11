@@ -18,6 +18,8 @@
 #
 #  user_id  (user_id => users.id)
 #
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :quotum do
     association :user, factory: :admin_user

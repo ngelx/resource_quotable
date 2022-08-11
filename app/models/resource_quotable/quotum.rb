@@ -18,6 +18,8 @@
 #
 #  user_id  (user_id => users.id)
 #
+# frozen_string_literal: true
+
 module ResourceQuotable
   class Quotum < ApplicationRecord
     belongs_to :user, class_name: ResourceQuotable.user_class.to_s

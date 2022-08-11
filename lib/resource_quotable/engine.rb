@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module ResourceQuotable
-  class Engine < ::Rails::Engine
+  class Engine < ::Rails::Engine  # :nodoc:
     isolate_namespace ResourceQuotable
 
     config.generators do |g|

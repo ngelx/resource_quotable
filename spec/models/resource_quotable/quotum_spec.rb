@@ -18,6 +18,8 @@
 #
 #  user_id  (user_id => users.id)
 #
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 module ResourceQuotable

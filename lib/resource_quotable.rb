@@ -4,8 +4,7 @@ require 'resource_quotable/version'
 require 'resource_quotable/engine'
 require 'resource_quotable/act_as_quotable'
 
-module ResourceQuotable
-  # Your code goes here...
+module ResourceQuotable # :nodoc:
   mattr_accessor :user_class
   mattr_accessor :resources
   mattr_accessor :actions

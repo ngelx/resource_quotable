@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
 module ResourceQuotable
-  module ApplicationHelper
+  module ApplicationHelper # :nodoc:
   end
 end
