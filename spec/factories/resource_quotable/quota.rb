@@ -15,12 +15,14 @@
 #  index_resource_quotable_quota_on_user_id  (user_id)
 #
 
+# frozen_string_literal: true
+
 FactoryBot.define do
-  factory :quotum do
+  factory :quotum, class: 'ResourceQuotable::Quotum' do
     association :user, factory: :admin_user
 
     resource_class { 'ResourceA' }
-    action { 1 }
+    action { :create }
     flag { false }
   end
 end

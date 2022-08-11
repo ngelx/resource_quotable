@@ -11,9 +11,9 @@ module ResourceQuotable
     end
 
     included do
-      def quota_for?(_options = { action: nil, resource: nil })
+      def allowed_to?(options = { action: nil, resource: nil })
         # We still need to do something with this.
-        true
+        quota.quotum_for(options[:action], options[:resource])&.flag ? false : true
       end
     end
   end

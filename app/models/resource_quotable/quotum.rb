@@ -18,6 +18,7 @@
 # frozen_string_literal: true
 
 module ResourceQuotable
+  # Flag is true when the quota has been reached.
   class Quotum < ApplicationRecord
     belongs_to :user, class_name: ResourceQuotable.user_class.to_s
     has_many :quotum_limits, dependent: :destroy
@@ -25,5 +26,9 @@ module ResourceQuotable
     validates :resource_class, :action, presence: true
 
     enum action: ResourceQuotable.actions, _suffix: true
+
+    def self.quotum_for(action, resource)
+      find_by(action: action, resource_class: resource)
+    end
   end
 end

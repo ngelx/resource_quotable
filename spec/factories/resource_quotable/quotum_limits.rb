@@ -14,11 +14,13 @@
 #  index_resource_quotable_quotum_limits_on_quotum_id  (quotum_id)
 #
 
+# frozen_string_literal: true
+
 FactoryBot.define do
-  factory :quotum_limit do
+  factory :quotum_limit, class: 'ResourceQuotable::QuotumLimit' do
     quotum
     limit { 10 }
-    period { 1 }
+    period { :day }
     flag { false }
     counter { 1 }
   end
