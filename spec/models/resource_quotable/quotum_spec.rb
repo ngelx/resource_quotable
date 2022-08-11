@@ -15,6 +15,8 @@
 #  index_resource_quotable_quota_on_user_id  (user_id)
 #
 
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 module ResourceQuotable

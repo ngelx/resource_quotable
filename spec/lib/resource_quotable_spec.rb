@@ -5,6 +5,15 @@ require 'rails_helper'
 RSpec.describe ResourceQuotable do
   include Shoulda::Matchers::ActiveModel
 
-  it { expect(described_class.actions).to eq %i[create delete update send] }
+  let(:actions) do
+    {
+      create: 0,
+      update: 1,
+      destroy: 2,
+      send: 3
+    }.freeze
+  end
+
+  it { expect(described_class.actions).to eq actions }
   it { expect(described_class.resource).to eq %w[ResourceA ResourceB NotModel] }
 end

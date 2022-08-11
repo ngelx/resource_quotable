@@ -9,7 +9,11 @@ module ResourceQuotable # :nodoc:
   mattr_accessor :resources
   mattr_accessor :actions
 
-  DEFAULT_ACTIONS = %i[create delete update].freeze
+  DEFAULT_ACTIONS = {
+    create: 0,
+    update: 1,
+    destroy: 2
+  }.freeze
 
   def self.user_class
     @@user_class.constantize
@@ -20,7 +24,7 @@ module ResourceQuotable # :nodoc:
   end
 
   def self.actions
-    @@actions.empty? ? DEFAULT_ACTIONS : DEFAULT_ACTIONS + @@actions
+    @@actions.empty? ? DEFAULT_ACTIONS : @@actions
   end
 end
 

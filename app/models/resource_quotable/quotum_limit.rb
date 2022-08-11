@@ -21,5 +21,13 @@ module ResourceQuotable
     belongs_to :quotum
 
     validates :counter, :limit, :period, presence: true
+
+    enum period: {
+      any: 0,
+      daily: 1,
+      weekly: 2,
+      monthly: 3,
+      yearly: 4
+    }, _suffix: true
   end
 end
