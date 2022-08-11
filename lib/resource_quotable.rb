@@ -3,6 +3,7 @@
 require 'resource_quotable/version'
 require 'resource_quotable/engine'
 require 'resource_quotable/act_as_quotable'
+require 'resource_quotable/exeptions'
 
 module ResourceQuotable # :nodoc:
   mattr_accessor :user_class

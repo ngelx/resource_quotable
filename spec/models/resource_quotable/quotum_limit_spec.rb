@@ -27,5 +27,29 @@ module ResourceQuotable
       it { is_expected.to validate_presence_of(:limit) }
       it { is_expected.to validate_presence_of(:period) }
     end
+
+    describe 'increment!' do
+      subject(:increment) { limit.increment! }
+
+      describe 'inside limits' do
+        let(:limit) { create(:quotum_limit, limit: 10, counter: 1, flag: false) }
+
+        it { expect { increment }.to change(limit, :counter).from(1).to(2) }
+        it { expect { increment }.not_to change(limit, :flag).from(false) }
+      end
+
+      describe 'reaching limit' do
+        let(:limit) { create(:quotum_limit, limit: 10, counter: 9, flag: false) }
+
+        it { expect { increment }.to change(limit, :counter).from(9).to(10) }
+        it { expect { increment }.to change(limit, :flag).from(false).to(true) }
+      end
+
+      describe 'over limit' do
+        let(:limit) { create(:quotum_limit, limit: 10, counter: 10, flag: true) }
+
+        it { expect { increment }.to raise_error ResourceQuotable::QuotaLimitError }
+      end
+    end
   end
 end

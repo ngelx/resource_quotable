@@ -17,6 +17,7 @@
 # frozen_string_literal: true
 
 module ResourceQuotable
+  # Flag is true when the quota has been reached.
   class QuotumLimit < ApplicationRecord
     belongs_to :quotum
 
@@ -29,5 +30,13 @@ module ResourceQuotable
       monthly: 3,
       yearly: 4
     }, _suffix: true
+
+    def increment!
+      raise ResourceQuotable::QuotaLimitError if flag
+
+      self.counter += 1
+      self.flag = (counter >= limit)
+      save
+    end
   end
 end

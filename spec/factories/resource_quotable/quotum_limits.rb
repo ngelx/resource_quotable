@@ -20,7 +20,7 @@ FactoryBot.define do
   factory :quotum_limit, class: 'ResourceQuotable::QuotumLimit' do
     quotum
     limit { 10 }
-    period { :day }
+    period { :daily }
     flag { false }
     counter { 1 }
   end

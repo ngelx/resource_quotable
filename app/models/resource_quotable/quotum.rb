@@ -30,5 +30,20 @@ module ResourceQuotable
     def self.quotum_for(action, resource)
       find_by(action: action, resource_class: resource)
     end
+
+    def increment!
+      raise ResourceQuotable::QuotaLimitError if flag
+
+      ActiveRecord::Base.transaction do
+        quotum_limits.map(&:increment!)
+        check_flag!
+      end
+    end
+
+    def check_flag!
+      self.flag = false
+      quotum_limits.map { |limit| self.flag = flag || limit.flag }
+      save
+    end
   end
 end

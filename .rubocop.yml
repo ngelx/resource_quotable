@@ -9,3 +9,15 @@ AllCops:
   TargetRubyVersion: 2.7
   TargetRailsVersion: 6.1
   NewCops: enable
+
+Metrics/ModuleLength:
+  Exclude:
+    - "**/*_spec.rb"
+    - "spec/factories/*"
+    - 'lib/task/*'
+
+Metrics/BlockLength:
+  Exclude:
+    - "**/*_spec.rb"
+    - "spec/factories/*"
+    - 'lib/task/*'
