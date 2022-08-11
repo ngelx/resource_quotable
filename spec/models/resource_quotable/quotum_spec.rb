@@ -14,11 +14,6 @@
 #
 #  index_resource_quotable_quota_on_user_id  (user_id)
 #
-# Foreign Keys
-#
-#  user_id  (user_id => users.id)
-#
-# frozen_string_literal: true
 
 require 'rails_helper'
 
@@ -28,6 +23,7 @@ module ResourceQuotable
       # subject { quo }
 
       it { is_expected.to belong_to(:user) }
+      it { is_expected.to have_many(:quotum_limits) }
 
       it { is_expected.to validate_presence_of(:resource_class) }
       it { is_expected.to validate_presence_of(:action) }

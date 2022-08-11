@@ -14,15 +14,11 @@
 #
 #  index_resource_quotable_quota_on_user_id  (user_id)
 #
-# Foreign Keys
-#
-#  user_id  (user_id => users.id)
-#
-# frozen_string_literal: true
 
 module ResourceQuotable
   class Quotum < ApplicationRecord
     belongs_to :user, class_name: ResourceQuotable.user_class.to_s
+    has_many :quotum_limits, dependent: :destroy
 
     validates :resource_class, :action, presence: true
   end
