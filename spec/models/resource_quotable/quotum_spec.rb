@@ -88,6 +88,11 @@ module ResourceQuotable
         allow(quotum).to receive(:check_flag!)
       end
 
+      it 'over limit' do
+        quotum.flag = true
+        expect { increment! }.to raise_error ResourceQuotable::QuotaLimitError
+      end
+
       it 'increase limit1' do
         increment!
         expect(limit1).to have_received(:increment!)
