@@ -71,16 +71,42 @@ module ResourceQuotable
       end
     end
 
-    # describe 'increment!' do
-    #   subject(:increment!) { quotum.increment! }
-    #
-    #   let(:quotum) { build(:quotum) }
-    #
-    #   before do
-    #     build_list(:quotum_limit, 3, quotum: quotum)
-    #   end
-    #
-    #   it { expect{} }
-    # end
+    describe 'increment!' do
+      subject(:increment!) { quotum.increment! }
+
+      let(:quotum) { build(:quotum) }
+      let(:limit1) { build_stubbed(:quotum_limit, quotum: quotum) }
+      let(:limit2) { build_stubbed(:quotum_limit, quotum: quotum) }
+      let(:other_limit) { build_stubbed(:quotum_limit) }
+
+      before do
+        quotum.quotum_limits = [limit1, limit2]
+        other_limit
+        allow(limit1).to receive(:increment!)
+        allow(limit2).to receive(:increment!)
+        allow(other_limit).to receive(:increment!)
+        allow(quotum).to receive(:check_flag!)
+      end
+
+      it 'increase limit1' do
+        increment!
+        expect(limit1).to have_received(:increment!)
+      end
+
+      it 'increase limit2' do
+        increment!
+        expect(limit2).to have_received(:increment!)
+      end
+
+      it 'do not increase other_limit' do
+        increment!
+        expect(other_limit).not_to have_received(:increment!)
+      end
+
+      it 'called check_flag!' do
+        increment!
+        expect(quotum).to have_received(:check_flag!)
+      end
+    end
   end
 end
