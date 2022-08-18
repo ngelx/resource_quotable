@@ -4,7 +4,7 @@ module ResourceQuotable
   class Destroy < Base
     include ActiveModel::Validations
 
-    attr_accessor :quotum_limit, :period
+    attr_accessor :quotum_limit
 
     validates :quotum_limit, presence: true
 
@@ -17,7 +17,7 @@ module ResourceQuotable
       Quotum.find(quotum_id).check_flag! if flag
 
       # TODO: remove Quotum when there is no more limits.
-      
+
       true
     end
   end
