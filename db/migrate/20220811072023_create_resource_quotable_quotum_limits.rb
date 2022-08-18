@@ -11,6 +11,7 @@ class CreateResourceQuotableQuotumLimits < ActiveRecord::Migration[6.1] # :nodoc
       t.boolean :flag, null: false, default: false
       t.integer :counter, null: false, default: 0
     end
+    add_index :resource_quotable_quotum_limits, %i[quotum_id period], unique: true
   end
 end
 

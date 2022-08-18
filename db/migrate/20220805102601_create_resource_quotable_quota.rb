@@ -10,5 +10,6 @@ class CreateResourceQuotableQuota < ActiveRecord::Migration[6.1] # :nodoc:
 
       t.timestamps
     end
+    add_index :resource_quotable_quota, %i[user_id resource_class action], unique: true
   end
 end
