@@ -51,5 +51,39 @@ module ResourceQuotable
         it { expect { increment }.to raise_error ResourceQuotable::QuotaLimitError }
       end
     end
+
+    describe 'reset!' do
+      subject(:reset!) { limit.reset! }
+
+      let(:quotum) { build_stubbed(:quotum) }
+
+      before { allow(quotum).to receive(:check_flag!) }
+
+      describe 'counter 0' do
+        let(:limit) { create(:quotum_limit, quotum: quotum, limit: 10, counter: 0, flag: false) }
+
+        it { expect { reset! }.not_to change(limit, :counter).from(0) }
+
+        it { expect { reset! }.not_to change(limit, :flag).from(false) }
+
+        it do
+          reset!
+          expect(quotum).not_to have_received(:check_flag!)
+        end
+      end
+
+      describe 'counter not 0' do
+        let(:limit) { create(:quotum_limit, quotum: quotum, limit: 10, counter: 10, flag: true) }
+
+        it { expect { reset! }.to change(limit, :counter).from(10).to(0) }
+
+        it { expect { reset! }.to change(limit, :flag).from(true).to(false) }
+
+        it do
+          reset!
+          expect(quotum).to have_received(:check_flag!)
+        end
+      end
+    end
   end
 end

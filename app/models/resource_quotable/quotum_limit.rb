@@ -38,5 +38,16 @@ module ResourceQuotable
       self.flag = (counter >= limit)
       save
     end
+
+    def reset!
+      return if counter.zero?
+
+      self.counter = 0
+      self.flag = (counter >= limit)
+      save
+
+      # I don't like this here.
+      quotum.check_flag!
+    end
   end
 end
