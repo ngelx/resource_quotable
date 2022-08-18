@@ -31,6 +31,8 @@ module ResourceQuotable
       yearly: 4
     }, _suffix: true
 
+    delegate :user, to: :quotum
+
     def increment!
       raise ResourceQuotable::QuotaLimitError if flag
 
