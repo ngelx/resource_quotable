@@ -2,8 +2,6 @@
 
 module ResourceQuotable
   class Update < Base
-    include ActiveModel::Validations
-
     attr_accessor :quotum_limit, :limit
 
     validates :quotum_limit, presence: true

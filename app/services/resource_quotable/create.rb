@@ -2,8 +2,6 @@
 
 module ResourceQuotable
   class Create < Base
-    include ActiveModel::Validations
-
     attr_accessor :user_id, :action, :resource, :limit, :period
 
     validates :user_id, :resource, presence: true

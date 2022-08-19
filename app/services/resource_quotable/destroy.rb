@@ -2,8 +2,6 @@
 
 module ResourceQuotable
   class Destroy < Base
-    include ActiveModel::Validations
-
     attr_accessor :quotum_limit
 
     validates :quotum_limit, presence: true

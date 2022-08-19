@@ -23,6 +23,8 @@ module ResourceQuotable
 
     validates :counter, :limit, :period, presence: true
 
+    scope :with_active_counter, -> { where('counter > 0') }
+
     enum period: {
       any: 0,
       daily: 1,
@@ -36,9 +38,8 @@ module ResourceQuotable
     def increment!
       raise ResourceQuotable::QuotaLimitError if flag
 
-      self.counter += 1
-      self.flag = (counter >= limit)
-      save
+      new_counter = counter + 1
+      update(counter: new_counter, flag: (new_counter >= limit))
     end
 
     def reset!
