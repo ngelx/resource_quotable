@@ -22,12 +22,22 @@ RSpec.configure do |config|
   if config.files_to_run.one?
     config.default_formatter = 'doc'
   else
-    SimpleCov.start 'rails' do
+    SimpleCov.start do
       coverage_dir './spec/coverage'
-      add_group 'Services', 'app/services'
 
+      add_group 'Controllers', 'app/controllers'
+      add_group 'Models', 'app/models'
+      add_group 'Services', 'app/services'
+      add_group 'Concers', 'lib/concerns'
+      add_group 'Engine', 'lib'
+
+      add_filter 'lib/resource_quotable/version'
       add_filter '.bundle'
       add_filter 'local_gems'
+      add_filter 'spec'
+      add_filter 'config'
+
+      track_files '{app,lib}/**/*.rb'
     end
   end
 end

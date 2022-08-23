@@ -55,7 +55,7 @@
           null
         ]
       },
-      "/resource_quotable/lib/resource_quotable/act_as_quotable.rb": {
+      "/resource_quotable/lib/concerns/models/act_as_quotable.rb": {
         "lines": [
           null,
           null,
@@ -506,6 +506,7 @@
           0,
           0,
           0,
+          0,
           0
         ],
         "branches": {
@@ -522,17 +523,6 @@
           null,
           0,
           0,
-          null,
-          0,
-          0,
-          null,
-          0,
-          0,
-          null,
-          0,
-          0,
-          null,
-          0,
           0,
           null,
           0,
@@ -543,17 +533,68 @@
           0,
           0,
           0,
+          0,
           null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
           0,
           0
         ],
         "branches": {
         }
       },
-      "/resource_quotable/lib/resource_quotable/version.rb": {
+      "/resource_quotable/lib/concerns/controllers/application_controller.rb": {
         "lines": [
           null,
           null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
           0,
           0,
           0
@@ -562,6 +603,6 @@
         }
       }
     },
-    "timestamp": 1661247622
+    "timestamp": 1661251297
   }
 }
