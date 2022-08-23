@@ -15,6 +15,23 @@
 # it.
 #
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+
+# NOTE: If SimpleCov starts after your application code is already loaded (via require), it won't be able to track your files and their coverage! The SimpleCov.start must be issued before any of your application code is required!
+require 'simplecov'
+RSpec.configure do |config|
+  if config.files_to_run.one?
+    config.default_formatter = 'doc'
+  else
+    SimpleCov.start 'rails' do
+      coverage_dir './spec/coverage'
+      add_group 'Services', 'app/services'
+
+      add_filter '.bundle'
+      add_filter 'local_gems'
+    end
+  end
+end
+
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
