@@ -214,6 +214,44 @@
           null
         ]
       },
+      "/resource_quotable/app/services/resource_quotable/base.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          102,
+          206,
+          null,
+          null,
+          null,
+          1,
+          78,
+          78,
+          null,
+          78,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          1,
+          54,
+          null,
+          null,
+          1,
+          32,
+          null,
+          null,
+          null
+        ]
+      },
       "/resource_quotable/app/services/resource_quotable/create.rb": {
         "lines": [
           null,
@@ -234,44 +272,6 @@
           32,
           null,
           31,
-          null,
-          null,
-          null
-        ]
-      },
-      "/resource_quotable/app/services/resource_quotable/base.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          1,
-          1,
-          null,
-          1,
-          101,
-          206,
-          null,
-          null,
-          null,
-          1,
-          77,
-          77,
-          null,
-          77,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          1,
-          null,
-          1,
-          54,
-          null,
-          null,
-          1,
-          32,
           null,
           null,
           null
@@ -487,20 +487,6 @@
         "branches": {
         }
       },
-      "/resource_quotable/app/mailers/resource_quotable/application_mailer.rb": {
-        "lines": [
-          null,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
       "/resource_quotable/app/helpers/resource_quotable/application_helper.rb": {
         "lines": [
           null,
@@ -576,6 +562,6 @@
         }
       }
     },
-    "timestamp": 1661247233
+    "timestamp": 1661247622
   }
 }

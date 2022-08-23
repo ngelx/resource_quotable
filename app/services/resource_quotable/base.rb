@@ -18,7 +18,7 @@ module ResourceQuotable
     end
 
     def call
-      raise 'nop'
+      raise ResourceQuotable::AbstractClassError
     end
 
     protected
