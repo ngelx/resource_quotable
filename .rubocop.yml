@@ -21,3 +21,9 @@ Metrics/BlockLength:
     - "**/*_spec.rb"
     - "spec/factories/*"
     - 'lib/task/*'
+
+Layout/LineLength:
+  Exclude:
+    - "**/*_spec.rb"
+    - "spec/factories/*"
+    - 'lib/task/*'

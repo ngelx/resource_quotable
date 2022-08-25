@@ -9,6 +9,9 @@
           1,
           1,
           1,
+          1,
+          null,
+          1,
           null,
           1,
           1,
@@ -35,6 +38,7 @@
           null,
           null,
           null,
+          1,
           1
         ]
       },
@@ -52,6 +56,17 @@
           1,
           null,
           null,
+          null
+        ]
+      },
+      "/resource_quotable/lib/resource_quotable/exeptions.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
           null
         ]
       },
@@ -79,7 +94,24 @@
           null
         ]
       },
-      "/resource_quotable/lib/resource_quotable/exeptions.rb": {
+      "/resource_quotable/lib/concerns/controllers/allowed_to_manage_quota_check.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          20,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/resource_quotable/app/controllers/resource_quotable/quotum_limits_controller.rb": {
         "lines": [
           null,
           null,
@@ -87,6 +119,84 @@
           1,
           1,
           1,
+          null,
+          1,
+          2,
+          2,
+          null,
+          2,
+          null,
+          null,
+          1,
+          null,
+          1,
+          4,
+          4,
+          null,
+          null,
+          1,
+          3,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          3,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          4,
+          4,
+          null,
+          null,
+          1,
+          null,
+          1,
+          15,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          3,
+          null,
+          null,
+          1,
+          11,
+          null,
+          null,
+          null
+        ]
+      },
+      "/resource_quotable/app/controllers/resource_quotable/application_controller.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/resource_quotable/app/helpers/resource_quotable/application_helper.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          null,
           null
         ]
       },
@@ -486,123 +596,8 @@
         ],
         "branches": {
         }
-      },
-      "/resource_quotable/app/helpers/resource_quotable/application_helper.rb": {
-        "lines": [
-          null,
-          null,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/resource_quotable/app/controllers/resource_quotable/application_controller.rb": {
-        "lines": [
-          null,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/resource_quotable/app/controllers/resource_quotable/quotum_limits_controller.rb": {
-        "lines": [
-          null,
-          null,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          null,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/resource_quotable/lib/concerns/controllers/application_controller.rb": {
-        "lines": [
-          null,
-          null,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
       }
     },
-    "timestamp": 1661251297
+    "timestamp": 1661415758
   }
 }
