@@ -2,7 +2,7 @@
 
 module ResourceQuotable
   class QuotumLimitsController < ApplicationController # :nodoc:
-    before_action :allowed_to_manage_quota?
+    before_action :check_authorization
     before_action :load_quotum_limit, only: %i[show edit update destroy]
 
     def index
@@ -60,6 +60,10 @@ module ResourceQuotable
 
     def load_quotum_limit
       @quotum_limit = QuotumLimit.find(params[:id])
+    end
+
+    def check_authorization
+      raise ResourceQuotable::AuthorizationError unless allowed_to_manage_quota?
     end
   end
 end
