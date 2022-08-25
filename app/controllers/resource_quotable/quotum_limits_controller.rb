@@ -27,6 +27,13 @@ module ResourceQuotable
         period: quotum_params[:quotum_limit][:period].to_sym,
         limit: quotum_params[:quotum_limit][:limit]
       )
+      respond_to do |format|
+        format.html do
+          flash[:notice] = 'QuotumLimit created'
+          redirect_to action: :index
+        end
+        format.js
+      end
     end
 
     def edit; end
@@ -36,11 +43,25 @@ module ResourceQuotable
         quotum_limit: @quotum_limit,
         limit: quotum_limit_params[:limit]
       )
+      respond_to do |format|
+        format.html do
+          flash[:notice] = 'QuotumLimit updated'
+          redirect_to action: :show, id: @quotum_limit.id
+        end
+        format.js
+      end
     end
 
     def destroy
       @id = @quotum_limit.id
       ResourceQuotable::Destroy.call(quotum_limit: @quotum_limit)
+      respond_to do |format|
+        format.html do
+          flash[:notice] = 'QuotumLimit deleted'
+          redirect_to action: :index
+        end
+        format.js
+      end
     end
 
     protected
