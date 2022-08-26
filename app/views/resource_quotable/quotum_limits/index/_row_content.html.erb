@@ -1,0 +1,44 @@
+<td><%= link_to quotum_limit.id, quotum_limit_path(quotum_limit), remote: true %></td>
+<td><%= quotum_limit.user %></td>
+<td><%= quotum_limit.resource %></td>
+<td><%= quotum_limit.action %></td>
+<td><%= quotum_limit.period %></td>
+<td><%= quotum_limit.limit %></td>
+<td><%= quotum_limit.counter %></td>
+
+<td class='text-right'>
+  <%= link_to '',
+      reset_quotum_limit_path(quotum_limit),
+      remote: true,
+      method: :put,
+      data: {
+          confirm: 'Are you sure you want to reset this quotum?',
+          tooltip: 'Reset quotum',
+          toggle: 'tooltip',
+          title: 'Reset quotum',
+          placement: 'bottom'
+        },
+      class: "fa fa-reload" %>
+  <%= link_to '',
+      edit_quotum_limit_path(quotum_limit),
+      remote: true,
+      class: 'fa fa-edit',
+      data: {
+        tooltip: 'Edit',
+        title: 'Edit',
+        toggle:'tooltip',
+        placement: 'left'
+      } %>
+  <%= link_to '',
+      quotum_limit_path(quotum_limit),
+      remote: true,
+      method: :delete,
+      data: {
+        confirm: 'Are you sure you want to destroy this quotum?',
+        tooltip: 'Delete',
+        toggle: 'tooltip',
+        title: 'Delete',
+        placement: 'left'
+      },
+      class: 'fa fa-trash' %>
+</td>

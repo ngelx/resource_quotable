@@ -73,15 +73,15 @@ module ResourceQuotable
         before { get_new }
 
         it { expect(response.content_type).to eq 'text/html; charset=utf-8' }
-        it { expect(assigns(:quotum)).to be_kind_of(ResourceQuotable::Quotum) }
-        it { expect(assigns(:quotum).persisted?).to be false }
-        it { expect(assigns(:quotum).quotum_limits.first).to be_kind_of(ResourceQuotable::QuotumLimit) }
+        it { expect(assigns(:quotum_limit)).to be_kind_of(ResourceQuotable::QuotumLimit) }
+        it { expect(assigns(:quotum_limit).persisted?).to be false }
+        it { expect(assigns(:quotum_limit).quotum).to be_kind_of(ResourceQuotable::Quotum) }
         it { expect(response).to render_template('new') }
       end
     end
 
     describe 'POST create' do
-      subject(:create) { post :create, params: { quotum: { user_id: 1, resource_class: 'ClassA', action: 'destroy', quotum_limit: { limit: 10, period: 'daily' } } }, xhr: xhr }
+      subject(:create) { post :create, params: { quotum_limit: { limit: 10, period: 'daily', quotum_params: { user_id: 1, resource_class: 'ClassA', action: 'destroy' } } }, xhr: xhr }
 
       let(:xhr) { false }
       let(:quotum_limit) { build(:quotum_limit) }
@@ -101,7 +101,7 @@ module ResourceQuotable
         end
 
         it { expect(response.content_type).to eq 'text/javascript; charset=utf-8' }
-        it { expect(response).to render_template(:create) }
+        it { expect(response).to render_template('create') }
       end
 
       describe 'test allowed_to_manage_quota? true' do

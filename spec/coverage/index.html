@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2022-08-25T10:32:14+00:00">2022-08-25T10:32:14+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2022-08-26T09:17:32+00:00">2022-08-26T09:17:32+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,14 +23,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="green">
-  98.34%
+  97.94%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         7.15
+         7.09
        </span>
     </span> hits/line
     )
@@ -43,11 +43,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>241</b> relevant lines,
-    <span class="green"><b>237</b> lines covered</span> and
-    <span class="red"><b>4</b> lines missed. </span>
+    <b>243</b> relevant lines,
+    <span class="green"><b>238</b> lines covered</span> and
+    <span class="red"><b>5</b> lines missed. </span>
     (<span class="green">
-  98.34%
+  97.94%
 </span>
 )
   </div>
@@ -84,7 +84,7 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#5b35ea77fa084f830e2a4db612856d56d9e506b7" class="src_link" title="app/controllers/resource_quotable/quotum_limits_controller.rb">app/controllers/resource_quotable/quotum_limits_controller.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">90</td>
+            <td class="cell--number">89</td>
             <td class="cell--number">44</td>
             <td class="cell--number">44</td>
             <td class="cell--number">0</td>
@@ -94,12 +94,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#b863a944beb85730508da97b44f51381746e16b6" class="src_link" title="app/helpers/resource_quotable/application_helper.rb">app/helpers/resource_quotable/application_helper.rb</a></td>
-            <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">6</td>
-            <td class="cell--number">2</td>
-            <td class="cell--number">2</td>
-            <td class="cell--number">0</td>
-            <td class="cell--number">1.00</td>
+            <td class="red strong cell--number t-file__coverage">75.00 %</td>
+            <td class="cell--number">9</td>
+            <td class="cell--number">4</td>
+            <td class="cell--number">3</td>
+            <td class="cell--number">1</td>
+            <td class="cell--number">0.75</td>
             
           </tr>
         
@@ -396,7 +396,7 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#5b35ea77fa084f830e2a4db612856d56d9e506b7" class="src_link" title="app/controllers/resource_quotable/quotum_limits_controller.rb">app/controllers/resource_quotable/quotum_limits_controller.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">90</td>
+            <td class="cell--number">89</td>
             <td class="cell--number">44</td>
             <td class="cell--number">44</td>
             <td class="cell--number">0</td>
@@ -878,14 +878,14 @@
     <span class="group_name">Ungrouped</span>
     (<span class="covered_percent">
       <span class="red">
-  33.33%
+  37.5%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="red">
-         0.33
+         0.38
        </span>
     </span> hits/line
     )
@@ -898,11 +898,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>6</b> relevant lines,
-    <span class="green"><b>2</b> lines covered</span> and
-    <span class="red"><b>4</b> lines missed. </span>
+    <b>8</b> relevant lines,
+    <span class="green"><b>3</b> lines covered</span> and
+    <span class="red"><b>5</b> lines missed. </span>
     (<span class="red">
-  33.33%
+  37.5%
 </span>
 )
   </div>
@@ -927,12 +927,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#b863a944beb85730508da97b44f51381746e16b6" class="src_link" title="app/helpers/resource_quotable/application_helper.rb">app/helpers/resource_quotable/application_helper.rb</a></td>
-            <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">6</td>
-            <td class="cell--number">2</td>
-            <td class="cell--number">2</td>
-            <td class="cell--number">0</td>
-            <td class="cell--number">1.00</td>
+            <td class="red strong cell--number t-file__coverage">75.00 %</td>
+            <td class="cell--number">9</td>
+            <td class="cell--number">4</td>
+            <td class="cell--number">3</td>
+            <td class="cell--number">1</td>
+            <td class="cell--number">0.75</td>
             
           </tr>
         
@@ -1280,7 +1280,7 @@
 
             
 
-            <code class="ruby">      @quotum = Quotum.new</code>
+            <code class="ruby">      @quotum_limit = QuotumLimit.new</code>
           </li>
         </div>
       
@@ -1291,7 +1291,7 @@
 
             
 
-            <code class="ruby">      @quotum.quotum_limits.build</code>
+            <code class="ruby">      @quotum_limit.build_quotum</code>
           </li>
         </div>
       
@@ -1346,7 +1346,7 @@
 
             
 
-            <code class="ruby">        user_id: quotum_params[:user_id],</code>
+            <code class="ruby">        user_id: quotum_limit_params[:quotum_params][:user_id],</code>
           </li>
         </div>
       
@@ -1357,7 +1357,7 @@
 
             
 
-            <code class="ruby">        resource: quotum_params[:resource_class],</code>
+            <code class="ruby">        resource: quotum_limit_params[:quotum_params][:resource_class],</code>
           </li>
         </div>
       
@@ -1368,7 +1368,7 @@
 
             
 
-            <code class="ruby">        action: quotum_params[:action].to_sym,</code>
+            <code class="ruby">        action: quotum_limit_params[:quotum_params][:action].to_sym,</code>
           </li>
         </div>
       
@@ -1379,7 +1379,7 @@
 
             
 
-            <code class="ruby">        period: quotum_params[:quotum_limit][:period].to_sym,</code>
+            <code class="ruby">        period: quotum_limit_params[:period].to_sym,</code>
           </li>
         </div>
       
@@ -1390,7 +1390,7 @@
 
             
 
-            <code class="ruby">        limit: quotum_params[:quotum_limit][:limit]</code>
+            <code class="ruby">        limit: quotum_limit_params[:limit]</code>
           </li>
         </div>
       
@@ -1566,7 +1566,7 @@
 
             
 
-            <code class="ruby">        limit: quotum_limit_params[:limit]</code>
+            <code class="ruby">        limit: quotum_limit_edit_params[:limit]</code>
           </li>
         </div>
       
@@ -1841,7 +1841,7 @@
 
             
 
-            <code class="ruby">    def quotum_params</code>
+            <code class="ruby">    def quotum_limit_params</code>
           </li>
         </div>
       
@@ -1852,7 +1852,7 @@
 
             
 
-            <code class="ruby">      params.require(:quotum).permit(</code>
+            <code class="ruby">      params.require(:quotum_limit).permit(</code>
           </li>
         </div>
       
@@ -1863,7 +1863,7 @@
 
             
 
-            <code class="ruby">        :user_id,</code>
+            <code class="ruby">        :period,</code>
           </li>
         </div>
       
@@ -1874,7 +1874,7 @@
 
             
 
-            <code class="ruby">        :resource_class,</code>
+            <code class="ruby">        :limit,</code>
           </li>
         </div>
       
@@ -1885,7 +1885,7 @@
 
             
 
-            <code class="ruby">        :action,</code>
+            <code class="ruby">        quotum_params: %i[user_id resource_class action]</code>
           </li>
         </div>
       
@@ -1896,7 +1896,7 @@
 
             
 
-            <code class="ruby">        quotum_limit: %i[period limit]</code>
+            <code class="ruby">      )</code>
           </li>
         </div>
       
@@ -1907,7 +1907,7 @@
 
             
 
-            <code class="ruby">      )</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -1918,34 +1918,23 @@
 
             
 
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="77">
-            
-            
-
-            
-
             <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="78">
+          <li class="covered" data-hits="1" data-linenumber="77">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    def quotum_limit_params</code>
+            <code class="ruby">    def quotum_limit_edit_params</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="6" data-linenumber="79">
+          <li class="covered" data-hits="6" data-linenumber="78">
             <span class="hits">6</span>
             
 
@@ -1956,7 +1945,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="80">
+          <li class="never" data-hits="" data-linenumber="79">
             
             
 
@@ -1967,7 +1956,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="81">
+          <li class="never" data-hits="" data-linenumber="80">
             
             
 
@@ -1978,7 +1967,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="82">
+          <li class="covered" data-hits="1" data-linenumber="81">
             <span class="hits">1</span>
             
 
@@ -1989,7 +1978,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="21" data-linenumber="83">
+          <li class="covered" data-hits="21" data-linenumber="82">
             <span class="hits">21</span>
             
 
@@ -2000,7 +1989,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="84">
+          <li class="never" data-hits="" data-linenumber="83">
             
             
 
@@ -2011,7 +2000,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="85">
+          <li class="never" data-hits="" data-linenumber="84">
             
             
 
@@ -2022,7 +2011,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="86">
+          <li class="covered" data-hits="1" data-linenumber="85">
             <span class="hits">1</span>
             
 
@@ -2033,7 +2022,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="44" data-linenumber="87">
+          <li class="covered" data-hits="44" data-linenumber="86">
             <span class="hits">44</span>
             
 
@@ -2044,7 +2033,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="88">
+          <li class="never" data-hits="" data-linenumber="87">
             
             
 
@@ -2055,7 +2044,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="89">
+          <li class="never" data-hits="" data-linenumber="88">
             
             
 
@@ -2066,7 +2055,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="90">
+          <li class="never" data-hits="" data-linenumber="89">
             
             
 
@@ -2085,8 +2074,8 @@
   <div class="header">
     <h3>app/helpers/resource_quotable/application_helper.rb</h3>
     <h4>
-      <span class="green">
-  100.0%
+      <span class="red">
+  75.0%
 </span>
 
       lines covered
@@ -2095,9 +2084,9 @@
     
 
     <div class="t-line-summary">
-      <b>2</b> relevant lines.
-      <span class="green"><b>2</b> lines covered</span> and
-      <span class="red"><b>0</b> lines missed.</span>
+      <b>4</b> relevant lines.
+      <span class="green"><b>3</b> lines covered</span> and
+      <span class="red"><b>1</b> lines missed.</span>
     </div>
 
     
@@ -2152,7 +2141,40 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="5">
+          <li class="covered" data-hits="1" data-linenumber="5">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def resource_quotable</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="6">
+            
+            
+
+            
+
+            <code class="ruby">      content_tag(:div, &#39;&#39;, id: &#39;resource_quotable_content&#39;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="7">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="8">
             
             
 
@@ -2163,7 +2185,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="6">
+          <li class="never" data-hits="" data-linenumber="9">
             
             
 

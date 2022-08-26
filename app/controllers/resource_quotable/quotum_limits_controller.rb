@@ -15,17 +15,17 @@ module ResourceQuotable
     def show; end
 
     def new
-      @quotum = Quotum.new
-      @quotum.quotum_limits.build
+      @quotum_limit = QuotumLimit.new
+      @quotum_limit.build_quotum
     end
 
     def create
       @quotum_limit = ResourceQuotable::Create.call(
-        user_id: quotum_params[:user_id],
-        resource: quotum_params[:resource_class],
-        action: quotum_params[:action].to_sym,
-        period: quotum_params[:quotum_limit][:period].to_sym,
-        limit: quotum_params[:quotum_limit][:limit]
+        user_id: quotum_limit_params[:quotum_params][:user_id],
+        resource: quotum_limit_params[:quotum_params][:resource_class],
+        action: quotum_limit_params[:quotum_params][:action].to_sym,
+        period: quotum_limit_params[:period].to_sym,
+        limit: quotum_limit_params[:limit]
       )
       respond_to do |format|
         format.html do
@@ -41,7 +41,7 @@ module ResourceQuotable
     def update
       @quotum_limit = ResourceQuotable::Update.call(
         quotum_limit: @quotum_limit,
-        limit: quotum_limit_params[:limit]
+        limit: quotum_limit_edit_params[:limit]
       )
       respond_to do |format|
         format.html do
@@ -66,16 +66,15 @@ module ResourceQuotable
 
     protected
 
-    def quotum_params
-      params.require(:quotum).permit(
-        :user_id,
-        :resource_class,
-        :action,
-        quotum_limit: %i[period limit]
+    def quotum_limit_params
+      params.require(:quotum_limit).permit(
+        :period,
+        :limit,
+        quotum_params: %i[user_id resource_class action]
       )
     end
 
-    def quotum_limit_params
+    def quotum_limit_edit_params
       params.require(:quotum_limit).permit(:limit)
     end
 

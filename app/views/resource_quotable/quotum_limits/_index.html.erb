@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-inverse lobiable lobi_scrollable" data-unpin=false data-minimize=false data-close=false data-edit-title=false data-reload=false data-edit=false data-fullscreen=true>
+      <div class="panel-heading">
+        <div class="panel-title" style="max-width: calc(100% - 120px);">
+          <h4>Quotas</h4>
+        </div>
+      </div>
+
+      <div class="panel-body" >
+        <% if @quotum_limits.empty? %>
+          <div class='row'>
+            <div class='col-md-12 text-center'>
+              <h3>No results</h3>
+            </div>
+          </div>
+        <% else %>
+          <div class='row'>
+            <div class='col-md-12'>
+              <table id='resource_quotable_table' class="table table-striped medium text-left">
+                <tbody>
+                  <tr>
+                    <th>Id</th>
+                    <th>User</th>
+                    <th>Resource</th>
+                    <th>Action</th>
+                    <th>Period</th>
+                    <th>Limit</th>
+                    <th>Counter</th>
+                    <th></th>
+                  </tr>
+                  <% @quotum_limits.each do |quotum_limit| %>
+                    <%= render partial: 'index/row', locals: { quotum_limit: quotum_limit } %>
+                  <% end %>
+                </tbody>
+              </table>
+              <%= paginate @quotum_limits, remote: true %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

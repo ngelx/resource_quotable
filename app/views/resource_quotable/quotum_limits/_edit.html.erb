@@ -1,0 +1,11 @@
+<%= form_for @quotum_limit, method: :put, remote: true do |f| %>
+  <fieldset>
+    <div class="form-group col-md-12">
+      <label class="form-control-label">Limit</label>
+      <%= f.number_field :limit, class: 'form-control', required: true %>
+    </div>
+    <div class="form-group col-md-12">
+      <%= f.submit 'Save', class: 'btn btn-success' %>
+    </div>
+  </fieldset>
+<% end %>
