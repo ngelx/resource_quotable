@@ -2,7 +2,7 @@
 
 # rubocop:disable Rails/CreateTableWithTimestamps
 
-class CreateResourceQuotableQuotumLimits < ActiveRecord::Migration[6.1] # :nodoc:
+class CreateResourceQuotableQuotumLimits < ActiveRecord::Migration[4.2] # :nodoc:
   def change
     create_table :resource_quotable_quotum_limits do |t|
       t.integer :quotum_id, null: false, index: true
@@ -11,7 +11,7 @@ class CreateResourceQuotableQuotumLimits < ActiveRecord::Migration[6.1] # :nodoc
       t.boolean :flag, null: false, default: false
       t.integer :counter, null: false, default: 0
     end
-    add_index :resource_quotable_quotum_limits, %i[quotum_id period], unique: true
+    add_index :resource_quotable_quotum_limits, %i[quotum_id period], unique: true, name: 'resource_quotable_quotum_limits_unique_index'
   end
 end
 
