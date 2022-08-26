@@ -3,7 +3,7 @@
 module ResourceQuotable
   module ApplicationHelper # :nodoc:
     def resource_quotable
-      content_tag(:div, '', id: 'resource_quotable_content')
+      content_tag(:div, '', id: ResourceQuotable.main_content)
     end
   end
 end

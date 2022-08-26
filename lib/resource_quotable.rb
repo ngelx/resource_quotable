@@ -12,6 +12,7 @@ module ResourceQuotable # :nodoc:
   mattr_accessor :user_class
   mattr_accessor :resources
   mattr_accessor :actions
+  mattr_accessor :main_content
 
   DEFAULT_ACTIONS = {
     create: 0,
@@ -29,6 +30,10 @@ module ResourceQuotable # :nodoc:
 
   def self.actions
     @@actions.empty? ? DEFAULT_ACTIONS : @@actions
+  end
+
+  def self.main_content
+    @@main_content.empty? ? 'resource_quotable_content' : @@main_content
   end
 end
 
