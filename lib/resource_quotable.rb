@@ -3,6 +3,7 @@
 require 'resource_quotable/version'
 require 'resource_quotable/engine'
 require 'resource_quotable/exeptions'
+require 'resource_quotable/helper'
 require 'concerns/models/act_as_quotable'
 require 'concerns/controllers/allowed_to_manage_quota_check'
 
@@ -48,7 +49,7 @@ module ResourceQuotable # :nodoc:
   end
 end
 
-# Extend ActiveRecord::Base with paranoid associations
+# Extend ActiveRecord::Base with associations
 ActiveRecord::Base.include ResourceQuotable::ActsAsQuotable
 ActionController::Base.include ResourceQuotable::AllowedToManageQuotaCheck
-ActionView::Base.include ResourceQuotable::ApplicationHelper
+ActionView::Base.include ResourceQuotable::Helper
