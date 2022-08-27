@@ -51,3 +51,4 @@ end
 # Extend ActiveRecord::Base with paranoid associations
 ActiveRecord::Base.include ResourceQuotable::ActsAsQuotable
 ActionController::Base.include ResourceQuotable::AllowedToManageQuotaCheck
+ActionView::Base.include ResourceQuotable::ApplicationHelper
