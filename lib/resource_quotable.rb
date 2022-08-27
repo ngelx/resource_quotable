@@ -13,6 +13,7 @@ module ResourceQuotable # :nodoc:
   mattr_accessor :resources
   mattr_accessor :actions
   mattr_accessor :main_content
+  mattr_accessor :base_controller
 
   DEFAULT_ACTIONS = {
     create: 0,
@@ -24,7 +25,7 @@ module ResourceQuotable # :nodoc:
     @@user_class.constantize
   end
 
-  def self.resource
+  def self.resources
     @@resources
   end
 
@@ -34,6 +35,16 @@ module ResourceQuotable # :nodoc:
 
   def self.main_content
     @@main_content.empty? ? 'resource_quotable_content' : @@main_content
+  end
+
+  def self.base_controller
+    @@base_controller.constantize
+  end
+
+  # Default way to set up ResourceQuotable. Run rails generate resource_quotable_install to create
+  # a fresh initializer with all configuration values.
+  def self.setup
+    yield self
   end
 end
 

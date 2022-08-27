@@ -3,7 +3,7 @@ PATH
   specs:
     resource_quotable (0.1.0)
       kaminari
-      rails (>= 4, < 7)
+      rails (>= 4.2, < 7)
 
 GEM
   remote: https://rubygems.org/

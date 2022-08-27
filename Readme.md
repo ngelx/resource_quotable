@@ -1,8 +1,5 @@
 # ResourceQuotable
-Short description and motivation.
-
-## Usage
-How to use my plugin.
+A Rails quota limit gem for resources. UNDER DEVELOPMENT
 
 ## Installation
 Add this line to your application's Gemfile:
@@ -37,30 +34,46 @@ Configure:
 ```ruby
 # config/initializers/resource_quotable.rb
 
-ResourceQuotable.user_class = 'AdminUser'
+ResourceQuotable.setup do |config|
+  config.user_class = 'User'
+  # main_content ID for rendering. default: 'resource_quotable_content'
+  config.main_content = 'resource_quotable_content'
 
-# Default [:create,:update, :destroy]
-ResourceQuotable.actions = {
-  create: 0,
-  update: 1,
-  destroy: 2,
-  send: 3
-}.freeze
+  config.base_controller = '::ApplicationController'
 
-# Resources
-ResourceQuotable.resources = %w[ResourceA ResourceB NotModel]
+  # Default [:create,:update, :destroy]
+  config.actions = {
+    create: 0,
+    update: 1,
+    destroy: 2,
+    send: 3
+  }.freeze
 
-# main_content ID for rendering. default: 'resource_quotable_content'
-ResourceQuotable.main_content = 'resource_quotable_content'
-
+  # Resources
+  config.resources = %w[ResourceA ResourceB NotModel]
+end
 ```
+
+Attach Quotable to the model.
+
+```ruby
+class User < ApplicationRecord
+  acts_as_quotable
+  # ....
+end
+```
+
+## Usage
+How to use my plugin.
 
 ## Contributing
 
-`docker-sync start`
-`docker-compose build`
-`docker-compose run web bundle install`
-`docker-compose run web bundle rspec`
+```bash
+$ docker-sync start
+$ docker-compose build
+$ docker-compose run web bundle install
+$ docker-compose run web bundle rspec
+```
 
 ## License
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).

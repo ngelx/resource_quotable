@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2022-08-26T09:33:57+00:00">2022-08-26T09:33:57+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2022-08-27T10:48:44+00:00">2022-08-27T10:48:44+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,14 +23,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="green">
-  97.94%
+  98.01%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         7.09
+         6.9
        </span>
     </span> hits/line
     )
@@ -43,11 +43,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>243</b> relevant lines,
-    <span class="green"><b>238</b> lines covered</span> and
+    <b>251</b> relevant lines,
+    <span class="green"><b>246</b> lines covered</span> and
     <span class="red"><b>5</b> lines missed. </span>
     (<span class="green">
-  97.94%
+  98.01%
 </span>
 )
   </div>
@@ -293,11 +293,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#01ac6ab62b0bb2c95dedfe3fd1e24c1c5e4d8b32" class="src_link" title="lib/resource_quotable.rb">lib/resource_quotable.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">37</td>
-            <td class="cell--number">19</td>
-            <td class="cell--number">19</td>
+            <td class="cell--number">53</td>
+            <td class="cell--number">27</td>
+            <td class="cell--number">27</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">2.79</td>
+            <td class="cell--number">2.30</td>
             
           </tr>
         
@@ -772,7 +772,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         2.61
+         2.39
        </span>
     </span> hits/line
     )
@@ -785,8 +785,8 @@
   </div>
 
   <div class="t-line-summary">
-    <b>46</b> relevant lines,
-    <span class="green"><b>46</b> lines covered</span> and
+    <b>54</b> relevant lines,
+    <span class="green"><b>54</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed. </span>
     (<span class="green">
   100.0%
@@ -837,11 +837,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#01ac6ab62b0bb2c95dedfe3fd1e24c1c5e4d8b32" class="src_link" title="lib/resource_quotable.rb">lib/resource_quotable.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">37</td>
-            <td class="cell--number">19</td>
-            <td class="cell--number">19</td>
+            <td class="cell--number">53</td>
+            <td class="cell--number">27</td>
+            <td class="cell--number">27</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">2.79</td>
+            <td class="cell--number">2.30</td>
             
           </tr>
         
@@ -1029,7 +1029,7 @@
 
             
 
-            <code class="ruby">  class ApplicationController &lt; ActionController::Base</code>
+            <code class="ruby">  class ApplicationController &lt; ResourceQuotable.base_controller</code>
           </li>
         </div>
       
@@ -2158,7 +2158,7 @@
 
             
 
-            <code class="ruby">      content_tag(:div, &#39;&#39;, id: &#39;resource_quotable_content&#39;)</code>
+            <code class="ruby">      content_tag(:div, &#39;&#39;, id: ResourceQuotable.main_content)</code>
           </li>
         </div>
       
@@ -6789,8 +6789,8 @@
     
 
     <div class="t-line-summary">
-      <b>19</b> relevant lines.
-      <span class="green"><b>19</b> lines covered</span> and
+      <b>27</b> relevant lines.
+      <span class="green"><b>27</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -6956,13 +6956,13 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="15">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="15">
+            <span class="hits">1</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">  mattr_accessor :main_content</code>
           </li>
         </div>
       
@@ -6973,7 +6973,7 @@
 
             
 
-            <code class="ruby">  DEFAULT_ACTIONS = {</code>
+            <code class="ruby">  mattr_accessor :base_controller</code>
           </li>
         </div>
       
@@ -6984,18 +6984,18 @@
 
             
 
-            <code class="ruby">    create: 0,</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="18">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="18">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">    update: 1,</code>
+            
+
+            <code class="ruby">  DEFAULT_ACTIONS = {</code>
           </li>
         </div>
       
@@ -7006,7 +7006,7 @@
 
             
 
-            <code class="ruby">    destroy: 2</code>
+            <code class="ruby">    create: 0,</code>
           </li>
         </div>
       
@@ -7017,7 +7017,7 @@
 
             
 
-            <code class="ruby">  }.freeze</code>
+            <code class="ruby">    update: 1,</code>
           </li>
         </div>
       
@@ -7028,12 +7028,34 @@
 
             
 
+            <code class="ruby">    destroy: 2</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="22">
+            
+            
+
+            
+
+            <code class="ruby">  }.freeze</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="23">
+            
+            
+
+            
+
             <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="22">
+          <li class="covered" data-hits="1" data-linenumber="24">
             <span class="hits">1</span>
             
 
@@ -7044,7 +7066,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="33" data-linenumber="23">
+          <li class="covered" data-hits="33" data-linenumber="25">
             <span class="hits">33</span>
             
 
@@ -7055,7 +7077,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="24">
+          <li class="never" data-hits="" data-linenumber="26">
             
             
 
@@ -7066,7 +7088,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="25">
+          <li class="never" data-hits="" data-linenumber="27">
             
             
 
@@ -7077,18 +7099,18 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="26">
+          <li class="covered" data-hits="1" data-linenumber="28">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  def self.resource</code>
+            <code class="ruby">  def self.resources</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="27">
+          <li class="covered" data-hits="1" data-linenumber="29">
             <span class="hits">1</span>
             
 
@@ -7099,7 +7121,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="28">
+          <li class="never" data-hits="" data-linenumber="30">
             
             
 
@@ -7110,7 +7132,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="29">
+          <li class="never" data-hits="" data-linenumber="31">
             
             
 
@@ -7121,7 +7143,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="30">
+          <li class="covered" data-hits="1" data-linenumber="32">
             <span class="hits">1</span>
             
 
@@ -7132,7 +7154,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="3" data-linenumber="31">
+          <li class="covered" data-hits="3" data-linenumber="33">
             <span class="hits">3</span>
             
 
@@ -7143,7 +7165,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="32">
+          <li class="never" data-hits="" data-linenumber="34">
             
             
 
@@ -7154,18 +7176,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="33">
-            
-            
-
-            
-
-            <code class="ruby">end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="34">
+          <li class="never" data-hits="" data-linenumber="35">
             
             
 
@@ -7176,7 +7187,172 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="35">
+          <li class="covered" data-hits="1" data-linenumber="36">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def self.main_content</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="37">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    @@main_content.empty? ? &#39;resource_quotable_content&#39; : @@main_content</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="38">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="39">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="40">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def self.base_controller</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="41">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">    @@base_controller.constantize</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="42">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="43">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="44">
+            
+            
+
+            
+
+            <code class="ruby">  # Default way to set up ResourceQuotable. Run rails generate resource_quotable_install to create</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="45">
+            
+            
+
+            
+
+            <code class="ruby">  # a fresh initializer with all configuration values.</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="46">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def self.setup</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="47">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    yield self</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="48">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="49">
+            
+            
+
+            
+
+            <code class="ruby">end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="50">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="51">
             
             
 
@@ -7187,7 +7363,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="36">
+          <li class="covered" data-hits="1" data-linenumber="52">
             <span class="hits">1</span>
             
 
@@ -7198,7 +7374,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="37">
+          <li class="covered" data-hits="1" data-linenumber="53">
             <span class="hits">1</span>
             
 

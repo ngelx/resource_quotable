@@ -15,5 +15,7 @@ RSpec.describe ResourceQuotable do
   end
 
   it { expect(described_class.actions).to eq actions }
-  it { expect(described_class.resource).to eq %w[ResourceA ResourceB NotModel] }
+  it { expect(described_class.resources).to eq %w[ResourceA ResourceB NotModel] }
+  it { expect(described_class.main_content).to eq 'resource_quotable_content' }
+  it { expect(described_class.base_controller).to eq ::ApplicationController }
 end

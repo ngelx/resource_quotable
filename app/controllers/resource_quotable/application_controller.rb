@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
 module ResourceQuotable
-  class ApplicationController < ActionController::Base
+  class ApplicationController < ResourceQuotable.base_controller
   end
 end
