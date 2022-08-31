@@ -30,7 +30,7 @@
                     <th></th>
                   </tr>
                   <% @quotum_limits.each do |quotum_limit| %>
-                    <%= render partial: 'index/row', locals: { quotum_limit: quotum_limit } %>
+                    <%= render partial: 'resource_quotable/quotum_limits/index/row', locals: { quotum_limit: quotum_limit } %>
                   <% end %>
                 </tbody>
               </table>
