@@ -6,24 +6,30 @@ module ResourceQuotable
 
     before_action :check_authorization
     before_action :load_quotum_limit, only: %i[show edit update destroy]
-    before_action :resource_quotable_before
-    after_action :resource_quotable_after
 
     def index
+      resource_quotable_before
       @page = params[:page] || 1
       @per_page = params[:per_page] || 5
 
       @quotum_limits = QuotumLimit.page(@page).per(@per_page)
+      resource_quotable_after
     end
 
-    def show; end
+    def show
+      resource_quotable_before
+      resource_quotable_after
+    end
 
     def new
+      resource_quotable_before
       @quotum_limit = QuotumLimit.new
       @quotum_limit.build_quotum
+      resource_quotable_after
     end
 
     def create
+      resource_quotable_before
       @quotum_limit = ResourceQuotable::Create.call(
         user_id: quotum_limit_params[:quotum][:user_id],
         resource: quotum_limit_params[:quotum][:resource_class],
@@ -31,6 +37,7 @@ module ResourceQuotable
         period: quotum_limit_params[:period].to_sym,
         limit: quotum_limit_params[:limit].to_i
       )
+      resource_quotable_after
       respond_to do |format|
         format.html do
           flash[:notice] = 'QuotumLimit created'
@@ -40,13 +47,18 @@ module ResourceQuotable
       end
     end
 
-    def edit; end
+    def edit
+      resource_quotable_before
+      resource_quotable_after
+    end
 
     def update
+      resource_quotable_before
       @quotum_limit = ResourceQuotable::Update.call(
         quotum_limit: @quotum_limit,
         limit: quotum_limit_edit_params[:limit].to_i
       )
+      resource_quotable_after
       respond_to do |format|
         format.html do
           flash[:notice] = 'QuotumLimit updated'
@@ -57,8 +69,10 @@ module ResourceQuotable
     end
 
     def destroy
+      resource_quotable_before
       @id = @quotum_limit.id
       ResourceQuotable::Destroy.call(quotum_limit: @quotum_limit)
+      resource_quotable_after
       respond_to do |format|
         format.html do
           flash[:notice] = 'QuotumLimit deleted'
