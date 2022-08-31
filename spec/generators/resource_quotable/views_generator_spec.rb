@@ -1,10 +1,10 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
+require 'rails_helper'
 require 'generator_spec'
-# require 'generators/smashing_documentation/install_generator'
+
 module ResourceQuotable
   module Generators
-
     RSpec.describe ViewsGenerator, type: :generator do
       destination File.expand_path('../tmp', __dir__)
 
