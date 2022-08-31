@@ -8,6 +8,9 @@ module ResourceQuotable
       def allowed_to_manage_quota?
         true
       end
+
+      def resource_quotable_before; end
+      def resource_quotable_after; end
     end
   end
 end

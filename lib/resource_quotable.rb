@@ -15,6 +15,7 @@ module ResourceQuotable # :nodoc:
   mattr_accessor :actions
   mattr_accessor :main_content
   mattr_accessor :base_controller
+  mattr_accessor :layout
 
   DEFAULT_ACTIONS = {
     create: 0,
@@ -40,6 +41,10 @@ module ResourceQuotable # :nodoc:
 
   def self.base_controller
     @@base_controller.constantize
+  end
+
+  def self.layout
+    @@layout || 'application'
   end
 
   # Default way to set up ResourceQuotable. Run rails generate resource_quotable_install to create

@@ -2,8 +2,12 @@
 
 module ResourceQuotable
   class QuotumLimitsController < ApplicationController # :nodoc:
+    layout ResourceQuotable.layout
+
     before_action :check_authorization
     before_action :load_quotum_limit, only: %i[show edit update destroy]
+    before_action :resource_quotable_before
+    after_action :resource_quotable_after
 
     def index
       @page = params[:page] || 1
