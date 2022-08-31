@@ -25,9 +25,9 @@ module ResourceQuotable
 
     def create
       @quotum_limit = ResourceQuotable::Create.call(
-        user_id: quotum_limit_params[:quotum_params][:user_id],
-        resource: quotum_limit_params[:quotum_params][:resource_class],
-        action: quotum_limit_params[:quotum_params][:action].to_sym,
+        user_id: quotum_limit_params[:quotum][:user_id],
+        resource: quotum_limit_params[:quotum][:resource_class],
+        action: quotum_limit_params[:quotum][:action].to_sym,
         period: quotum_limit_params[:period].to_sym,
         limit: quotum_limit_params[:limit]
       )
@@ -74,7 +74,7 @@ module ResourceQuotable
       params.require(:quotum_limit).permit(
         :period,
         :limit,
-        quotum_params: %i[user_id resource_class action]
+        quotum: %i[user_id resource_class action]
       )
     end
 

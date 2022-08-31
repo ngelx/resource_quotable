@@ -3,12 +3,12 @@
     <%= f.fields_for :quotum do |quotum_form| %>
       <div class="form-group col-md-12">
         <label class="form-control-label">User</label>
-        <%= quotum_form.select :user_id, collection_for_select(ResourceQuotable.user_class.all, :id, :name), { prompt: 'Select' }, class: "form-control", required: true  %>
+        <%= quotum_form.select :user_id, options_from_collection_for_select(ResourceQuotable.user_class.all, :id, :name), { prompt: 'Select' }, class: "form-control", required: true  %>
       </div>
 
       <div class="form-group col-md-12">
         <label class="form-control-label">Resource</label>
-        <%= quotum_form.select :resource, options_for_select(ResourceQuotable.resources, @quotum_limit.quotum.resource), { prompt: 'Select' }, class: "form-control", required: true  %>
+        <%= quotum_form.select :resource_class, options_for_select(ResourceQuotable.resources, @quotum_limit.quotum.resource_class), { prompt: 'Select' }, class: "form-control", required: true  %>
       </div>
 
       <div class="form-group col-md-12">
@@ -16,10 +16,10 @@
         <%= quotum_form.select :action, options_for_select(ResourceQuotable.actions.keys, @quotum_limit.quotum.action.to_s), { prompt: 'Select' }, class: "form-control", required: true  %>
       </div>
     <% end %>
-    
+
     <div class="form-group col-md-12">
       <label class="form-control-label">Period</label>
-      <%= f.select :period, options_for_select(QuotumLimit.periods.keys, @quotum_limit.period.to_s), { prompt: 'Select' }, class: "form-control", required: true  %>
+      <%= f.select :period, options_for_select(ResourceQuotable::QuotumLimit.periods.keys, @quotum_limit.period.to_s), { prompt: 'Select' }, class: "form-control", required: true  %>
     </div>
 
     <div class="form-group col-md-12">

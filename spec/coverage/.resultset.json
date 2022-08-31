@@ -11,6 +11,7 @@
           1,
           1,
           1,
+          1,
           null,
           1,
           null,
@@ -120,6 +121,28 @@
           null,
           1,
           4,
+          null,
+          null,
+          null
+        ]
+      },
+      "/resource_quotable/lib/resource_quotable/generators/views_generator.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
           null,
           null,
           null
@@ -672,31 +695,8 @@
         ],
         "branches": {
         }
-      },
-      "/resource_quotable/lib/generators/resource_quotable/views_generator.rb": {
-        "lines": [
-          null,
-          null,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
       }
     },
-    "timestamp": 1661938648
+    "timestamp": 1661957603
   }
 }

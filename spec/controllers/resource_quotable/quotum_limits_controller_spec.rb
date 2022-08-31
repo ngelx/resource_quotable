@@ -81,7 +81,7 @@ module ResourceQuotable
     end
 
     describe 'POST create' do
-      subject(:create) { post :create, params: { quotum_limit: { limit: 10, period: 'daily', quotum_params: { user_id: 1, resource_class: 'ClassA', action: 'destroy' } } }, xhr: xhr }
+      subject(:create) { post :create, params: { quotum_limit: { limit: 10, period: 'daily', quotum: { user_id: 1, resource_class: 'ClassA', action: 'destroy' } } }, xhr: xhr }
 
       let(:xhr) { false }
       let(:quotum_limit) { build(:quotum_limit) }
