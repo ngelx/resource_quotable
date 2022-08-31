@@ -33,7 +33,7 @@ module ResourceQuotable
       yearly: 4
     }, _suffix: true
 
-    delegate :user, to: :quotum
+    delegate :user, :action, :resource_class, to: :quotum
 
     def increment!
       raise ResourceQuotable::QuotaLimitError if flag
