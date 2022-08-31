@@ -40,7 +40,7 @@
           null,
           null,
           1,
-          2,
+          1,
           null,
           null,
           1,
@@ -167,37 +167,6 @@
           null,
           1,
           1,
-          null,
-          null
-        ]
-      },
-      "/resource_quotable/app/helpers/resource_quotable/application_helper.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          1,
-          1,
-          1,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
           null,
           null
         ]
@@ -693,6 +662,6 @@
         }
       }
     },
-    "timestamp": 1661621051
+    "timestamp": 1661931707
   }
 }
