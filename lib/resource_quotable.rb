@@ -4,6 +4,7 @@ require 'resource_quotable/version'
 require 'resource_quotable/engine'
 require 'resource_quotable/exeptions'
 require 'resource_quotable/helper'
+require 'resource_quotable/generators/views_generator'
 require 'concerns/models/act_as_quotable'
 require 'concerns/controllers/allowed_to_manage_quota_check'
 

@@ -87,6 +87,9 @@ GEM
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
     ffaker (2.21.0)
+    generator_spec (0.9.4)
+      activesupport (>= 3.0.0)
+      railties (>= 3.0.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.12.0)
@@ -228,6 +231,7 @@ DEPENDENCIES
   database_cleaner-active_record
   factory_bot_rails
   ffaker
+  generator_spec
   rails-controller-testing
   resource_quotable!
   rspec-rails
