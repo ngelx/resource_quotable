@@ -81,11 +81,11 @@ module ResourceQuotable
     end
 
     describe 'POST create' do
-      subject(:create) { post :create, params: { quotum_limit: { limit: 10, period: 'daily', quotum: { user_id: 1, resource_class: 'ClassA', action: 'destroy' } } }, xhr: xhr }
+      subject(:create) { post :create, params: { quotum_limit: { limit: 10, period: 'daily', quotum: { user_id: '1', resource_class: 'ClassA', action: 'destroy' } } }, xhr: xhr }
 
       let(:xhr) { false }
       let(:quotum_limit) { build(:quotum_limit) }
-      let(:mock_service) { allow(ResourceQuotable::Create).to receive(:call).with({ user_id: '1', resource: 'ClassA', action: :destroy, period: :daily, limit: '10' }).and_return(quotum_limit) }
+      let(:mock_service) { allow(ResourceQuotable::Create).to receive(:call).with({ user_id: '1', resource: 'ClassA', action: :destroy, period: :daily, limit: 10 }).and_return(quotum_limit) }
 
       it 'test allowed_to_manage_quota?' do
         allow(controller).to receive(:allowed_to_manage_quota?).and_return(false)
@@ -110,7 +110,7 @@ module ResourceQuotable
           create
         end
 
-        it { expect(ResourceQuotable::Create).to have_received(:call).with({ user_id: '1', resource: 'ClassA', action: :destroy, period: :daily, limit: '10' }) }
+        it { expect(ResourceQuotable::Create).to have_received(:call).with({ user_id: '1', resource: 'ClassA', action: :destroy, period: :daily, limit: 10 }) }
         it { expect(assigns(:quotum_limit)).to eq(quotum_limit) }
         it { expect(response).to redirect_to(action: :index) }
         it { expect(response.content_type).to eq 'text/html; charset=utf-8' }
@@ -146,7 +146,7 @@ module ResourceQuotable
 
       let(:xhr) { false }
       let(:quotum_limit) { create(:quotum_limit, limit: 10) }
-      let(:mock_service) { allow(ResourceQuotable::Update).to receive(:call).with({ quotum_limit: quotum_limit, limit: '10' }).and_return(quotum_limit) }
+      let(:mock_service) { allow(ResourceQuotable::Update).to receive(:call).with({ quotum_limit: quotum_limit, limit: 10 }).and_return(quotum_limit) }
 
       it 'test allowed_to_manage_quota?' do
         allow(controller).to receive(:allowed_to_manage_quota?).and_return(false)
@@ -171,7 +171,7 @@ module ResourceQuotable
           update
         end
 
-        it { expect(ResourceQuotable::Update).to have_received(:call).with({ quotum_limit: quotum_limit, limit: '10' }) }
+        it { expect(ResourceQuotable::Update).to have_received(:call).with({ quotum_limit: quotum_limit, limit: 10 }) }
         it { expect(assigns(:quotum_limit)).to eq(quotum_limit) }
         it { expect(response).to redirect_to(action: :show, id: quotum_limit.id) }
         it { expect(response.content_type).to eq 'text/html; charset=utf-8' }

@@ -29,7 +29,7 @@ module ResourceQuotable
         resource: quotum_limit_params[:quotum][:resource_class],
         action: quotum_limit_params[:quotum][:action].to_sym,
         period: quotum_limit_params[:period].to_sym,
-        limit: quotum_limit_params[:limit]
+        limit: quotum_limit_params[:limit].to_i
       )
       respond_to do |format|
         format.html do
@@ -45,7 +45,7 @@ module ResourceQuotable
     def update
       @quotum_limit = ResourceQuotable::Update.call(
         quotum_limit: @quotum_limit,
-        limit: quotum_limit_edit_params[:limit]
+        limit: quotum_limit_edit_params[:limit].to_i
       )
       respond_to do |format|
         format.html do
