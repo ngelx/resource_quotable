@@ -1,39 +1,34 @@
 # == Schema Information
 #
-# Table name: resource_quotable_quotum_limits
+# Table name: resource_quotable_quotum_trackers
 #
 #  id        :integer          not null, primary key
 #  counter   :integer          default(0), not null
 #  flag      :boolean          default(FALSE), not null
-#  limit     :integer          default(1), not null
-#  period    :integer          default(0), not null
 #  quotum_id :integer          not null
+#  user_id   :integer          not null
 #
 # Indexes
 #
-#  index_resource_quotable_quotum_limits_on_quotum_id  (quotum_id)
+#  index_resource_quotable_quotum_trackers_on_quotum_id  (quotum_id)
+#  index_resource_quotable_quotum_trackers_on_user_id    (user_id)
+#  resource_quotable_quotum_trackers_unique_index        (user_id,quotum_id) UNIQUE
 #
 
 # frozen_string_literal: true
 
 module ResourceQuotable
   # Flag is true when the quota has been reached.
-  class QuotumLimit < ApplicationRecord
+  class QuotumTracker < ApplicationRecord
     belongs_to :quotum
+    belongs_to :user, class_name: ResourceQuotable.user_class.to_s
 
-    validates :counter, :limit, :period, presence: true
+    validates :counter, presence: true
 
     scope :with_active_counter, -> { where('counter > 0') }
+    scope :quotum_for, ->(action, resource) { where(action: action, resource_class: resource) }
 
-    enum period: {
-      any: 0,
-      daily: 1,
-      weekly: 2,
-      monthly: 3,
-      yearly: 4
-    }, _suffix: true
-
-    delegate :user, :action, :resource_class, to: :quotum
+    delegate :action, :resource_class, :limit, to: :quotum
 
     def increment!
       raise ResourceQuotable::QuotaLimitError if flag
@@ -48,9 +43,6 @@ module ResourceQuotable
       self.counter = 0
       self.flag = (counter >= limit)
       save
-
-      # I don't like this here.
-      quotum.check_flag!
     end
   end
 end

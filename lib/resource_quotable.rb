@@ -6,12 +6,14 @@ require 'resource_quotable/exeptions'
 require 'resource_quotable/helper'
 require 'resource_quotable/generators/views_generator'
 require 'concerns/models/act_as_quotable'
+require 'concerns/models/act_as_quota_trackable'
 require 'concerns/controllers/allowed_to_manage_quota_check'
 
 require 'kaminari'
 
 module ResourceQuotable # :nodoc:
   mattr_accessor :user_class
+  mattr_accessor :group_class
   mattr_accessor :resources
   mattr_accessor :actions
   mattr_accessor :main_content
@@ -26,6 +28,10 @@ module ResourceQuotable # :nodoc:
 
   def self.user_class
     @@user_class.constantize
+  end
+
+  def self.group_class
+    @@group_class.constantize
   end
 
   def self.resources

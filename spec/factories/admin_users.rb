@@ -13,5 +13,6 @@
 FactoryBot.define do
   factory :admin_user do
     username { FFaker::Internet.user_name }
+    user_group
   end
 end

@@ -10,5 +10,7 @@
 #  updated_at :datetime         not null
 #
 class AdminUser < ApplicationRecord
-  acts_as_quotable
+  acts_as_quota_trackable
+
+  belongs_to :user_group
 end

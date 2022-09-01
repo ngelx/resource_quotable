@@ -3,47 +3,37 @@
 # Table name: resource_quotable_quota
 #
 #  id             :integer          not null, primary key
-#  action         :integer
-#  flag           :boolean
-#  resource_class :text
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
-#  user_id        :integer          not null
+#  action         :integer          default("create"), not null
+#  limit          :integer          default(1), not null
+#  period         :integer          default("any"), not null
+#  resource_class :string           not null
+#  created_at     :datetime
+#  updated_at     :datetime
+#  group_id       :integer          not null
 #
 # Indexes
 #
-#  index_resource_quotable_quota_on_user_id  (user_id)
+#  index_resource_quotable_quota_on_group_id  (group_id)
+#  resource_quotable_quota_unique_index       (group_id,resource_class,action,period) UNIQUE
 #
 
 # frozen_string_literal: true
 
 module ResourceQuotable
-  # Flag is true when the quota has been reached.
-  class Quotum < ApplicationRecord
-    belongs_to :user, class_name: ResourceQuotable.user_class.to_s
-    has_many :quotum_limits, dependent: :destroy
+  class Quotum < ApplicationRecord # :nodoc:
+    belongs_to :group, class_name: ResourceQuotable.group_class.to_s
+    has_many :quotum_trackers, dependent: :destroy
 
-    validates :resource_class, :action, presence: true
+    validates :resource_class, :action, :period, :limit, presence: true
 
     enum action: ResourceQuotable.actions, _suffix: true
 
-    def self.quotum_for(action, resource)
-      find_by(action: action, resource_class: resource)
-    end
-
-    def increment!
-      raise ResourceQuotable::QuotaLimitError if flag
-
-      ActiveRecord::Base.transaction do
-        quotum_limits.map(&:increment!)
-        check_flag!
-      end
-    end
-
-    def check_flag!
-      self.flag = false
-      quotum_limits.map { |limit| self.flag = flag || limit.flag }
-      save
-    end
+    enum period: {
+      any: 0,
+      daily: 1,
+      weekly: 2,
+      monthly: 3,
+      yearly: 4
+    }, _suffix: true
   end
 end
