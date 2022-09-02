@@ -9,91 +9,62 @@ module ResourceQuotable
     describe 'Basic' do
       it { is_expected.to be_kind_of(ResourceQuotable::Base) }
 
-      it { is_expected.to validate_presence_of(:quotum_limit) }
+      it { is_expected.to validate_presence_of(:quotum) }
       it { is_expected.to validate_numericality_of(:limit).only_integer.is_greater_than_or_equal_to(0) }
     end
 
     describe 'Call' do
-      subject(:call) { described_class.call(quotum_limit: quotum_limit, limit: new_limit) }
+      subject(:call) { described_class.call(quotum: quotum, limit: new_limit) }
 
-      let(:quotum) { build_stubbed(:quotum) }
+      let(:quotum) { create(:quotum, limit: 10) }
+      let(:tracker7) { create(:quotum_tracker, quotum: quotum, counter: 7, flag: false) }
+      let(:tracker8) { create(:quotum_tracker, quotum: quotum, counter: 8, flag: false) }
+      let(:tracker8_noice) { create(:quotum_tracker, counter: 8, flag: false) }
+      let(:tracker10) { create(:quotum_tracker, quotum: quotum, counter: 10, flag: true) }
+      let(:tracker11) { create(:quotum_tracker, quotum: quotum, counter: 11, flag: true) }
+      let(:tracker11_noice) { create(:quotum_tracker, counter: 11, flag: true) }
+      let(:tracker12) { create(:quotum_tracker, quotum: quotum, counter: 12, flag: true) }
 
-      before { allow(quotum).to receive(:check_flag!) }
-
-      describe 'flag true, new flag true' do
-        let(:quotum_limit) { create(:quotum_limit, quotum: quotum, flag: true, counter: 10, limit: 10) }
-
-        let(:new_limit) { 8 }
-
-        before { quotum_limit }
-
-        it { expect { call }.not_to change(QuotumLimit, :count) }
-
-        it { expect(call).to be_kind_of(QuotumLimit) }
-        it { expect(call.limit).to eq 8 }
-        it { expect(call.flag).to be true }
-
-        it 'not call check_flag on quotum' do
-          call
-          expect(quotum).not_to have_received(:check_flag!)
-        end
+      before do
+        tracker7
+        tracker8
+        tracker8_noice
+        tracker10
+        tracker11
+        tracker11_noice
+        tracker12
       end
 
-      describe 'flag true, new flag false' do
-        let(:quotum_limit) { create(:quotum_limit, quotum: quotum, flag: true, counter: 10, limit: 10) }
-
+      describe 'increase limit' do
         let(:new_limit) { 12 }
 
-        before { quotum_limit }
-
-        it { expect { call }.not_to change(QuotumLimit, :count) }
-
-        it { expect(call).to be_kind_of(QuotumLimit) }
+        it { expect { call }.not_to change(Quotum, :count) }
+        it { expect(call).to be_kind_of(Quotum) }
         it { expect(call.limit).to eq 12 }
-        it { expect(call.flag).to be false }
 
-        it 'call check_flag on quotum' do
-          call
-          expect(quotum).to have_received(:check_flag!)
-        end
+        it { expect { call }.not_to change { tracker7.reload.flag }.from(false) }
+        it { expect { call }.not_to change { tracker8.reload.flag }.from(false) }
+        it { expect { call }.not_to change { tracker8_noice.reload.flag }.from(false) }
+        it { expect { call }.to change { tracker10.reload.flag }.from(true).to(false) }
+        it { expect { call }.to change { tracker11.reload.flag }.from(true).to(false) }
+        it { expect { call }.not_to change { tracker11_noice.reload.flag }.from(true) }
+        it { expect { call }.not_to change { tracker12.reload.flag }.from(true) }
       end
 
-      describe 'flag false, new flag false' do
-        let(:quotum_limit) { create(:quotum_limit, quotum: quotum, flag: false, counter: 8, limit: 10) }
-
-        let(:new_limit) { 12 }
-
-        before { quotum_limit }
-
-        it { expect { call }.not_to change(QuotumLimit, :count) }
-
-        it { expect(call).to be_kind_of(QuotumLimit) }
-        it { expect(call.limit).to eq 12 }
-        it { expect(call.flag).to be false }
-
-        it 'not call check_flag on quotum' do
-          call
-          expect(quotum).not_to have_received(:check_flag!)
-        end
-      end
-
-      describe 'flag false, new flag true' do
-        let(:quotum_limit) { create(:quotum_limit, quotum: quotum, flag: false, counter: 8, limit: 10) }
-
+      describe 'decrease limit' do
         let(:new_limit) { 8 }
 
-        before { quotum_limit }
-
-        it { expect { call }.not_to change(QuotumLimit, :count) }
-
-        it { expect(call).to be_kind_of(QuotumLimit) }
+        it { expect { call }.not_to change(Quotum, :count) }
+        it { expect(call).to be_kind_of(Quotum) }
         it { expect(call.limit).to eq 8 }
-        it { expect(call.flag).to be true }
 
-        it 'call check_flag on quotum' do
-          call
-          expect(quotum).to have_received(:check_flag!)
-        end
+        it { expect { call }.not_to change { tracker7.reload.flag }.from(false) }
+        it { expect { call }.to change { tracker8.reload.flag }.from(false).to(true) }
+        it { expect { call }.not_to change { tracker8_noice.reload.flag }.from(false) }
+        it { expect { call }.not_to change { tracker10.reload.flag }.from(true) }
+        it { expect { call }.not_to change { tracker11.reload.flag }.from(true) }
+        it { expect { call }.not_to change { tracker11_noice.reload.flag }.from(true) }
+        it { expect { call }.not_to change { tracker12.reload.flag }.from(true) }
       end
     end
   end

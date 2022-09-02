@@ -27,6 +27,10 @@ module ResourceQuotable
 
     scope :with_active_counter, -> { where('counter > 0') }
     scope :quotum_for, ->(action, resource) { where(action: action, resource_class: resource) }
+    scope :under_limit, ->(limit_to_check_against) { where('counter < ?', limit_to_check_against) }
+    scope :over_limit, ->(limit_to_check_against) { where('counter >= ?', limit_to_check_against) }
+    scope :flagged, -> { where(flag: true) }
+    scope :not_flagged, -> { where(flag: false) }
 
     delegate :action, :resource_class, :limit, to: :quotum
 
