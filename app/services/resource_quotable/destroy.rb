@@ -1,22 +1,14 @@
 # frozen_string_literal: true
 
 module ResourceQuotable
+  # Destroy Quota
   class Destroy < Base
-    attr_accessor :quotum_limit
+    attr_accessor :quotum
 
-    validates :quotum_limit, presence: true
+    validates :quotum, presence: true
 
     def call
-      flag = quotum_limit.flag
-      quotum_id = quotum_limit.quotum_id
-
-      quotum_limit.destroy
-
-      Quotum.find(quotum_id).check_flag! if flag
-
-      # TODO: remove Quotum when there is no more limits.
-
-      true
+      quotum.destroy
     end
   end
 end

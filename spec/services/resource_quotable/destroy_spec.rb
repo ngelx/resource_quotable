@@ -9,47 +9,23 @@ module ResourceQuotable
     describe 'Basic' do
       it { is_expected.to be_kind_of(ResourceQuotable::Base) }
 
-      it { is_expected.to validate_presence_of(:quotum_limit) }
+      it { is_expected.to validate_presence_of(:quotum) }
     end
 
     describe 'Call' do
-      subject(:call) { described_class.call(quotum_limit: quotum_limit) }
+      subject(:call) { described_class.call(quotum: quotum) }
 
       let(:quotum) { build_stubbed(:quotum) }
 
       before do
-        allow(quotum).to receive(:check_flag!)
-        allow(Quotum).to receive(:find).with(quotum.id).and_return(quotum)
+        allow(quotum).to receive(:destroy).and_return(true)
       end
 
-      describe 'flag true' do
-        let(:quotum_limit) { create(:quotum_limit, quotum: quotum, flag: true) }
+      it { expect(call).to be true }
 
-        before { quotum_limit }
-
-        it { expect(call).to be true }
-
-        it { expect { call }.to change(QuotumLimit, :count).by(-1) }
-
-        it 'call check_flag on quotum' do
-          call
-          expect(quotum).to have_received(:check_flag!)
-        end
-      end
-
-      describe 'flag false' do
-        let(:quotum_limit) { create(:quotum_limit, quotum: quotum, flag: false) }
-
-        before { quotum_limit }
-
-        it { expect(call).to be true }
-
-        it { expect { call }.to change(QuotumLimit, :count).by(-1) }
-
-        it 'not to call check_flag on quotum' do
-          call
-          expect(quotum).not_to have_received(:check_flag!)
-        end
+      it 'call destroy on quotum' do
+        call
+        expect(quotum).to have_received(:destroy)
       end
     end
   end
