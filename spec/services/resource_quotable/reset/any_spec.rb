@@ -22,21 +22,21 @@ module ResourceQuotable
     describe 'quotum_in_period' do
       subject(:quotum_in_period) { abstract_class.call }
 
-      let(:daily_limits) { create_list(:quotum_limit, 3, period: :daily) }
-      let(:weekly_limits) { create_list(:quotum_limit, 3, period: :weekly) }
-      let(:monthly_limits) { create_list(:quotum_limit, 3, period: :monthly) }
-      let(:yearly_limits) { create_list(:quotum_limit, 3, period: :yearly) }
-      let(:any_limits) { create_list(:quotum_limit, 3, period: :any) }
+      let(:daily_quota) { create_list(:quotum, 3, period: :daily) }
+      let(:weekly_quota) { create_list(:quotum, 3, period: :weekly) }
+      let(:monthly_quota) { create_list(:quotum, 3, period: :monthly) }
+      let(:yearly_quota) { create_list(:quotum, 3, period: :yearly) }
+      let(:any_quota) { create_list(:quotum, 3, period: :any) }
 
       before do
-        daily_limits
-        weekly_limits
-        monthly_limits
-        yearly_limits
-        any_limits
+        daily_quota
+        weekly_quota
+        monthly_quota
+        yearly_quota
+        any_quota
       end
 
-      it { expect(quotum_in_period).to eq any_limits }
+      it { expect(quotum_in_period).to eq any_quota }
     end
   end
 end

@@ -2,21 +2,14 @@
 
 module ResourceQuotable
   module Reset
+    # Base Reset Quota for X period.
     class Base < ResourceQuotable::Base
       include ActiveModel::Validations
 
       def call
-        quotum_ids = []
-
-        quotum_in_period.with_active_counter.each do |quotum_limit|
-          flag = quotum_limit.flag
-
-          quotum_limit.update(counter: 0, flag: false)
-
-          quotum_ids.push(quotum_limit.quotum_id) if flag
+        quotum_in_period.each do |quotum|
+          quotum.quotum_trackers.with_active_counter.map(&:reset!)
         end
-
-        Quotum.where(id: quotum_ids.uniq).each(&:check_flag!) unless quotum_ids.empty?
       end
 
       protected

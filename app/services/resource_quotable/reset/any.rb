@@ -2,13 +2,14 @@
 
 module ResourceQuotable
   module Reset
+    # Reset Quota for Any period.
     class Any < Base
       include ActiveModel::Validations
 
       protected
 
       def quotum_in_period
-        QuotumLimit.any_period
+        Quotum.any_period
       end
     end
   end
