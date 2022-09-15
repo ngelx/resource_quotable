@@ -63,5 +63,6 @@ end
 
 # Extend ActiveRecord::Base with associations
 ActiveRecord::Base.include ResourceQuotable::ActsAsQuotable
+ActiveRecord::Base.include ResourceQuotable::ActsAsQuotaTrackable
 ActionController::Base.include ResourceQuotable::AllowedToManageQuotaCheck
 ActionView::Base.include ResourceQuotable::Helper

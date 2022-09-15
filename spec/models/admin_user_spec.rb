@@ -7,6 +7,8 @@ RSpec.describe AdminUser, type: :model do
     let(:admin_user) { build(:admin_user) }
 
     it { is_expected.to have_many(:quotum_trackers) }
+    it { is_expected.to respond_to(:resource_quotable_group) }
+    it { is_expected.not_to respond_to(:resource_quotable_users) }
 
     # describe 'allowed_to?' do
     #   before do
