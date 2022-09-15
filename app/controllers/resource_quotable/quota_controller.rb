@@ -1,46 +1,46 @@
 # frozen_string_literal: true
 
 module ResourceQuotable
-  class QuotumLimitsController < ApplicationController # :nodoc:
+  class QuotaController < ApplicationController # :nodoc:
     layout ResourceQuotable.layout
 
     before_action :check_authorization
-    before_action :load_quotum_limit, only: %i[show edit update destroy]
+    before_action :load_quotum, only: %i[show edit update destroy]
 
     def index
       resource_quotable_before
       @page = params[:page] || 1
       @per_page = params[:per_page] || 5
 
-      @quotum_limits = QuotumLimit.page(@page).per(@per_page)
+      @quota = Quotum.page(@page).per(@per_page)
       resource_quotable_after
     end
 
     def show
       resource_quotable_before
+      @quotum_trackers = @quotum.quotum_trackers.page(@page).per(@per_page)
       resource_quotable_after
     end
 
     def new
       resource_quotable_before
-      @quotum_limit = QuotumLimit.new
-      @quotum_limit.build_quotum
+      @quotum = Quotum.new
       resource_quotable_after
     end
 
     def create
       resource_quotable_before
-      @quotum_limit = ResourceQuotable::Create.call(
-        user_id: quotum_limit_params[:quotum][:user_id],
-        resource: quotum_limit_params[:quotum][:resource_class],
-        action: quotum_limit_params[:quotum][:action].to_sym,
-        period: quotum_limit_params[:period].to_sym,
-        limit: quotum_limit_params[:limit].to_i
+      @quotum = ResourceQuotable::Create.call(
+        group: ResourceQuotable.group_class.find(quotum_params[:group_id]),
+        resource: quotum_params[:resource_class],
+        action: quotum_params[:action].to_sym,
+        period: quotum_params[:period].to_sym,
+        limit: quotum_params[:limit].to_i
       )
       resource_quotable_after
       respond_to do |format|
         format.html do
-          flash[:notice] = 'QuotumLimit created'
+          flash[:notice] = 'Quotum created'
           redirect_to action: :index
         end
         format.js
@@ -54,15 +54,15 @@ module ResourceQuotable
 
     def update
       resource_quotable_before
-      @quotum_limit = ResourceQuotable::Update.call(
-        quotum_limit: @quotum_limit,
-        limit: quotum_limit_edit_params[:limit].to_i
+      @quotum = ResourceQuotable::Update.call(
+        quotum: @quotum,
+        limit: quotum_edit_params[:limit].to_i
       )
       resource_quotable_after
       respond_to do |format|
         format.html do
-          flash[:notice] = 'QuotumLimit updated'
-          redirect_to action: :show, id: @quotum_limit.id
+          flash[:notice] = 'Quotum updated'
+          redirect_to action: :show, id: @quotum.id
         end
         format.js
       end
@@ -70,12 +70,12 @@ module ResourceQuotable
 
     def destroy
       resource_quotable_before
-      @id = @quotum_limit.id
-      ResourceQuotable::Destroy.call(quotum_limit: @quotum_limit)
+      @id = @quotum.id
+      ResourceQuotable::Destroy.call(quotum: @quotum)
       resource_quotable_after
       respond_to do |format|
         format.html do
-          flash[:notice] = 'QuotumLimit deleted'
+          flash[:notice] = 'Quotum deleted'
           redirect_to action: :index
         end
         format.js
@@ -84,20 +84,22 @@ module ResourceQuotable
 
     protected
 
-    def quotum_limit_params
-      params.require(:quotum_limit).permit(
+    def quotum_params
+      params.require(:quotum).permit(
         :period,
         :limit,
-        quotum: %i[user_id resource_class action]
+        :resource_class,
+        :action,
+        :group_id
       )
     end
 
-    def quotum_limit_edit_params
-      params.require(:quotum_limit).permit(:limit)
+    def quotum_edit_params
+      params.require(:quotum).permit(:limit)
     end
 
-    def load_quotum_limit
-      @quotum_limit = QuotumLimit.find(params[:id])
+    def load_quotum
+      @quotum = Quotum.find(params[:id])
     end
 
     def check_authorization

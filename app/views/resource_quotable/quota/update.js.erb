@@ -1,0 +1,3 @@
+$("#quotum_<%= @quotum.id %>").replaceWith( "<%= escape_javascript render partial: 'index/row_content', locals: { quotum: @quotum } %>" );
+
+alert("Quotum Limit #<%= @quotum.id %> updated");

@@ -1,0 +1,3 @@
+$('#resource_quotable_table').append("<%= escape_javascript render partial: 'index/row', locals: { quotum: @quotum } %>");
+
+alert("Quotum Limit #<%= @quotum.id %> created");

@@ -8,7 +8,7 @@
       </div>
 
       <div class="panel-body" >
-        <% if @quotum_limits.empty? %>
+        <% if @quota.empty? %>
           <div class='row'>
             <div class='col-md-12 text-center'>
               <h3>No results</h3>
@@ -26,15 +26,14 @@
                     <th>Action</th>
                     <th>Period</th>
                     <th>Limit</th>
-                    <th>Counter</th>
                     <th></th>
                   </tr>
-                  <% @quotum_limits.each do |quotum_limit| %>
-                    <%= render partial: 'resource_quotable/quotum_limits/index/row', locals: { quotum_limit: quotum_limit } %>
+                  <% @quota.each do |quotum| %>
+                    <%= render partial: 'resource_quotable/quota/index/row', locals: { quotum: quotum } %>
                   <% end %>
                 </tbody>
               </table>
-              <%= paginate @quotum_limits, remote: true %>
+              <%= paginate @quota, remote: true %>
             </div>
           </div>
         <% end %>

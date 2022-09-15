@@ -1,14 +1,13 @@
-<td><%= link_to quotum_limit.id, quotum_limit_path(quotum_limit), remote: true %></td>
-<td><%= quotum_limit.user.name %></td>
-<td><%= quotum_limit.resource_class %></td>
-<td><%= quotum_limit.action %></td>
-<td><%= quotum_limit.period %></td>
-<td><%= quotum_limit.limit %></td>
-<td><%= quotum_limit.counter %></td>
+<td><%= link_to quotum.id, quotum_path(quotum), remote: true %></td>
+<td><%= quotum.user.name %></td>
+<td><%= quotum.resource_class %></td>
+<td><%= quotum.action %></td>
+<td><%= quotum.period %></td>
+<td><%= quotum.limit %></td>
 
 <td class='text-right'>
   <%= link_to '',
-      reset_quotum_limit_path(quotum_limit),
+      reset_quotum_path(quotum),
       remote: true,
       method: :put,
       data: {
@@ -20,7 +19,7 @@
         },
       class: "fa fa-reload" %>
   <%= link_to '',
-      edit_quotum_limit_path(quotum_limit),
+      edit_quotum_path(quotum),
       remote: true,
       class: 'fa fa-edit',
       data: {
@@ -30,7 +29,7 @@
         placement: 'left'
       } %>
   <%= link_to '',
-      quotum_limit_path(quotum_limit),
+      quotum_path(quotum),
       remote: true,
       method: :delete,
       data: {
