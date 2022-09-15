@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module ResourceQuotable
-  class Base
+  class Base # :nodoc:
     include ActiveModel::Validations
 
     def initialize(args = {})
@@ -19,16 +19,6 @@ module ResourceQuotable
 
     def call
       raise ResourceQuotable::AbstractClassError
-    end
-
-    protected
-
-    def user
-      @user ||= ResourceQuotable.user_class.find(user_id)
-    end
-
-    def load_quotum
-      user.quota.quotum_for(action, resource)
     end
   end
 end

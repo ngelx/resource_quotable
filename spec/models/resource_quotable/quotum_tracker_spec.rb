@@ -75,7 +75,21 @@ module ResourceQuotable
       end
     end
 
-    describe 'quotum_for'
+    describe 'for_user' do
+      subject(:for_user) { described_class.for_user(user) }
+
+      let(:user) { create(:admin_user) }
+      let(:result) { create_list(:quotum_tracker, 3, user: user) }
+
+      before do
+        create(:quotum_tracker)
+        result
+        create(:quotum_tracker)
+      end
+
+      it { expect(for_user).to be_kind_of(ActiveRecord::Relation) }
+      it { expect(for_user.to_a).to eq(result) }
+    end
 
     describe 'with_active_counter'
   end

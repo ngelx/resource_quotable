@@ -24,6 +24,8 @@ module ResourceQuotable
     belongs_to :group, class_name: ResourceQuotable.group_class.to_s
     has_many :quotum_trackers, dependent: :destroy
 
+    scope :for_resource_action, ->(resource, action) { where(action: action, resource_class: resource) }
+
     validates :resource_class, :action, :period, :limit, presence: true
 
     enum action: ResourceQuotable.actions, _suffix: true

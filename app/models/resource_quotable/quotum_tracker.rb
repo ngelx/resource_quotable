@@ -26,7 +26,7 @@ module ResourceQuotable
     validates :counter, presence: true
 
     scope :with_active_counter, -> { where('counter > 0') }
-    scope :quotum_for, ->(action, resource) { where(action: action, resource_class: resource) }
+    scope :for_user, ->(user) { where(user: user) }
     scope :under_limit, ->(limit_to_check_against) { where('counter < ?', limit_to_check_against) }
     scope :over_limit, ->(limit_to_check_against) { where('counter >= ?', limit_to_check_against) }
     scope :flagged, -> { where(flag: true) }
