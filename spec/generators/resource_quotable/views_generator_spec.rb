@@ -18,7 +18,7 @@ module ResourceQuotable
           directory 'app' do
             directory 'views' do
               directory 'resource_quotable' do
-                directory 'quotum_limits' do
+                directory 'quota' do
                   file 'index.html.erb'
                 end
               end
