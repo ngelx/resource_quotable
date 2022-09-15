@@ -35,6 +35,8 @@ Configure:
 # config/initializers/resource_quotable.rb
 
 ResourceQuotable.setup do |config|
+  config.group_class = 'UserGroup'
+
   config.user_class = 'User'
   # main_content ID for rendering. default: 'resource_quotable_content'
   config.main_content = 'resource_quotable_content'
@@ -54,17 +56,26 @@ ResourceQuotable.setup do |config|
 end
 ```
 
-Attach Quotable to the model.
+Attach Quotable to model.
 
 ```ruby
 class User < ApplicationRecord
+  acts_as_quotum_trackable
+  # ....
+  belongs_to :group
+  # ....
+end
+
+class Group < ApplicationRecord
   acts_as_quotable
+  # ....
+  has_many :users, dependent: :destroy
   # ....
 end
 ```
 
 ## Usage
-How to use my plugin.
+Still Working on this doc....
 
 ## Contributing
 
