@@ -11,7 +11,7 @@ module ResourceQuotable
                  class_name: 'ResourceQuotable::QuotumTracker',
                  foreign_key: 'user_id'
 
-        define_method(:resource_quotable_group) { ActiveModel::Naming.param_key(ResourceQuotable.group_class) }
+        define_method(:resource_quotable_group) { send(ActiveModel::Naming.param_key(ResourceQuotable.group_class)) }
       end
     end
 

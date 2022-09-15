@@ -9,7 +9,7 @@ module ResourceQuotable
     describe 'Basic' do
       it { is_expected.to be_kind_of(ResourceQuotable::Base) }
 
-      it { is_expected.to validate_presence_of(:user_id) }
+      it { is_expected.to validate_presence_of(:group) }
       it { is_expected.to validate_presence_of(:resource) }
       it { is_expected.to validate_inclusion_of(:action).in_array(%i[create update destroy]) }
       it { is_expected.to validate_inclusion_of(:period).in_array(%i[any daily weekly monthly yearly]) }
@@ -17,64 +17,41 @@ module ResourceQuotable
     end
 
     describe 'call' do
-      subject(:call) { described_class.call(user_id: user.id, resource: 'ResourceA', action: :create, period: :daily, limit: limit) }
+      subject(:call) { described_class.call(group: group, resource: 'ResourceA', action: :create, period: :daily, limit: limit) }
 
-      let(:user) { create(:admin_user) }
+      let(:group) { create(:user_group) }
+      let(:user_from_other_group) { create(:admin_user) }
       let(:limit) { 10 }
 
-      describe 'new quotum, new limit' do
+      before { create_list(:admin_user, 3, user_group: group) }
+
+      describe 'new quotum' do
         it { expect { call }.to change(Quotum, :count).by(1) }
-        it { expect { call }.to change(QuotumLimit, :count).by(1) }
-        it { expect(call).to be_kind_of(QuotumLimit) }
-        it { expect(call.user).to eq user }
+        it { expect { call }.to change(QuotumTracker, :count).by(3) }
+        it { expect(call).to be_kind_of(Quotum) }
+        it { expect(call.group).to eq group }
         it { expect(call.limit).to eq 10 }
-        it { expect(call.counter).to eq 0 }
         it { expect(call.period).to eq 'daily' }
-        it { expect(call.flag).to be false }
-        it { expect(call.quotum.resource_class).to eq 'ResourceA' }
-        it { expect(call.quotum.action).to eq 'create' }
-        it { expect(call.quotum.flag).to be false }
+        it { expect(call.resource_class).to eq 'ResourceA' }
+        it { expect(call.action).to eq 'create' }
+
+        it { expect(call.quotum_trackers.first.flag).to be false }
+        it { expect(call.quotum_trackers.first.counter).to eq 0 }
       end
 
       describe 'limit 0' do
         let(:limit) { 0 }
 
         it { expect { call }.to change(Quotum, :count).by(1) }
-        it { expect { call }.to change(QuotumLimit, :count).by(1) }
-        it { expect(call).to be_kind_of(QuotumLimit) }
-        it { expect(call.user).to eq user }
+        it { expect { call }.to change(QuotumTracker, :count).by(3) }
         it { expect(call.limit).to eq 0 }
-        it { expect(call.counter).to eq 0 }
-        it { expect(call.period).to eq 'daily' }
-        it { expect(call.flag).to be true }
-        it { expect(call.quotum.resource_class).to eq 'ResourceA' }
-        it { expect(call.quotum.action).to eq 'create' }
-        it { expect(call.quotum.flag).to be true }
+        it { expect(call.quotum_trackers.first.flag).to be true }
+        it { expect(call.quotum_trackers.first.counter).to eq 0 }
       end
 
-      describe 'existing quotum, new limit' do
-        let(:quotum) { create(:quotum, user: user, resource_class: 'ResourceA', action: 'create') }
-
-        before { quotum }
-
-        it { expect { call }.not_to change(Quotum, :count) }
-        it { expect { call }.to change(QuotumLimit, :count).by(1) }
-        it { expect(call).to be_kind_of(QuotumLimit) }
-        it { expect(call.user).to eq user }
-        it { expect(call.limit).to eq 10 }
-        it { expect(call.counter).to eq 0 }
-        it { expect(call.period).to eq 'daily' }
-        it { expect(call.flag).to be false }
-        it { expect(call.quotum).to eq quotum }
-      end
-
-      describe 'existing quotum, existing limit' do
-        let(:quotum) { create(:quotum, user: user, resource_class: 'ResourceA', action: 'create') }
-        let(:quotum_limit) { create(:quotum_limit, quotum: quotum, period: :daily) }
-
-        before { quotum_limit }
-
-        it { expect { call }.to raise_error QuotaLimitDuplicateError }
+      it 'existing quotum' do
+        create(:quotum, group: group, resource_class: 'ResourceA', action: 'create', period: :daily, limit: limit)
+        expect { call }.to raise_error(ResourceQuotable::QuotaDuplicateError)
       end
     end
   end

@@ -1,21 +1,29 @@
 # frozen_string_literal: true
 
 module ResourceQuotable
+  # Create Quota and all quota_trackers for a group of users.
   class Create < Base
-    attr_accessor :user_id, :action, :resource, :limit, :period
+    attr_accessor :group, :action, :resource, :limit, :period
 
-    validates :user_id, :resource, presence: true
+    validates :group, :resource, presence: true
     validates_inclusion_of :action, in: ResourceQuotable.actions.keys
-    validates_inclusion_of :period, in: QuotumLimit.periods.keys.map(&:to_sym)
+    validates_inclusion_of :period, in: Quotum.periods.keys.map(&:to_sym)
     validates_numericality_of :limit, only_integer: true, greater_than_or_equal_to: 0
 
     def call
-      quotum = load_quotum
-      quotum ||= user.quota.create(resource_class: resource, action: action, flag: limit.zero?)
+      # Crear Quotum
+      # Crear QuotaTracker user existentes.
+      quotum = nil
+      flag = !limit.positive?
 
-      raise QuotaLimitDuplicateError if quotum.quotum_limits.find_by(period: period)
+      ResourceQuotable::Quotum.transaction do
+        quotum = group.quota.create!(resource_class: resource, action: action, period: period, limit: limit)
+        group.resource_quotable_users.map { |user| user.quotum_trackers.create!(quotum: quotum, counter: 0, flag: flag) }
+      end
 
-      quotum.quotum_limits.create(period: period, limit: limit, counter: 0, flag: limit.zero?)
+      quotum
+    rescue ActiveRecord::RecordNotUnique
+      raise ResourceQuotable::QuotaDuplicateError
     end
   end
 end

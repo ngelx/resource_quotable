@@ -10,6 +10,13 @@ RSpec.describe AdminUser, type: :model do
     it { is_expected.to respond_to(:resource_quotable_group) }
     it { is_expected.not_to respond_to(:resource_quotable_users) }
 
+    describe 'resource_quotable_group' do
+      subject(:resource_quotable_group) { admin_user.resource_quotable_group }
+
+      let(:admin_user) { create(:admin_user) }
+
+      it { expect(resource_quotable_group).to eq(admin_user.user_group) }
+    end
     # describe 'allowed_to?' do
     #   before do
     #     admin_user.save!
