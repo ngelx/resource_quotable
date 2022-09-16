@@ -5,6 +5,10 @@ module ResourceQuotable
     extend ActiveSupport::Concern
 
     included do
+      def allowed_to?(resource, action)
+        !ResourceQuotable::ActionServices::Check(user: current_user, resource: resource, action: action)
+      end
+
       def allowed_to_manage_quota?
         true
       end
