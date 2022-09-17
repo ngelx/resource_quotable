@@ -5,6 +5,7 @@
 #  id        :integer          not null, primary key
 #  counter   :integer          default(0), not null
 #  flag      :boolean          default(FALSE), not null
+#  user_type :string           not null
 #  quotum_id :integer          not null
 #  user_id   :integer          not null
 #
@@ -21,7 +22,7 @@ module ResourceQuotable
   # Flag is true when the quota has been reached.
   class QuotumTracker < ApplicationRecord
     belongs_to :quotum
-    belongs_to :user, class_name: ResourceQuotable.user_class.to_s
+    belongs_to :user, polymorphic: true, inverse_of: :quotum_trackers
 
     validates :counter, presence: true
 

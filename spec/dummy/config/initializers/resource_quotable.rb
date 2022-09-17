@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 ResourceQuotable.setup do |config|
-  config.group_class = 'UserGroup'
+  config.group_method = 'user_group'
+  config.users_method = 'admin_users'
 
-  config.user_class = 'AdminUser'
   # main_content ID for rendering. default: 'resource_quotable_content'
   config.main_content = 'resource_quotable_content'
 

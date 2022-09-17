@@ -7,6 +7,7 @@
 #  id        :integer          not null, primary key
 #  counter   :integer          default(0), not null
 #  flag      :boolean          default(FALSE), not null
+#  user_type :string           not null
 #  quotum_id :integer          not null
 #  user_id   :integer          not null
 #

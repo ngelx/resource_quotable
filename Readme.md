@@ -35,14 +35,35 @@ Configure:
 # config/initializers/resource_quotable.rb
 
 ResourceQuotable.setup do |config|
-  config.group_class = 'UserGroup'
 
-  config.user_class = 'User'
-  # main_content ID for rendering. default: 'resource_quotable_content'
+  ##
+  # Mandatory settings
+  #
+  # Resources to track quota.
+  #   format: Array of strings. Could be anything.
+  #
+  config.resources = %w[ResourceA ResourceB NotModel]
+
+  ##
+  # Optional settings
+
+  # Method to access group form user instance.
+  # default: 'group'
+  config.group_method = 'user_group'
+
+  # Method to access users form group instance.
+  # default: 'users'
+  config.users_method = 'admin_users'
+
+  # main_content ID for rendering.
+  # default: 'resource_quotable_content'
   config.main_content = 'resource_quotable_content'
 
+  # Base controller.
+  # default: '::ApplicationController'
   config.base_controller = '::ApplicationController'
 
+  # Actions
   # Default [:create,:update, :destroy]
   config.actions = {
     create: 0,
@@ -51,8 +72,6 @@ ResourceQuotable.setup do |config|
     send: 3
   }.freeze
 
-  # Resources
-  config.resources = %w[ResourceA ResourceB NotModel]
 end
 ```
 
@@ -83,6 +102,7 @@ Still Working on this doc....
 $ docker-sync start
 $ docker-compose build
 $ docker-compose run web bundle install
+$ docker-compose run web bundle rails db:setup
 $ docker-compose run web bundle rspec
 ```
 

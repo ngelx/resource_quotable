@@ -15,6 +15,8 @@ module ResourceQuotable
 
       def resource_quotable_before; end
       def resource_quotable_after; end
+
+      def load_quotable_group; end
     end
   end
 end

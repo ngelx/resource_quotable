@@ -4,6 +4,7 @@
 #
 #  id             :integer          not null, primary key
 #  action         :integer          default("create"), not null
+#  group_type     :string           not null
 #  limit          :integer          default(1), not null
 #  period         :integer          default("any"), not null
 #  resource_class :string           not null
@@ -21,7 +22,7 @@
 
 module ResourceQuotable
   class Quotum < ApplicationRecord # :nodoc:
-    belongs_to :group, class_name: ResourceQuotable.group_class.to_s
+    belongs_to :group, polymorphic: true, inverse_of: :quota
     has_many :quotum_trackers, dependent: :destroy
 
     scope :for_resource_action, ->(resource, action) { where(action: action, resource_class: resource) }

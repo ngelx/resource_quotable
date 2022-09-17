@@ -31,7 +31,7 @@ module ResourceQuotable
     def create
       resource_quotable_before
       @quotum = ResourceQuotable::Create.call(
-        group: ResourceQuotable.group_class.find(quotum_params[:group_id]),
+        group: load_quotable_group || default_load_quotable_group,
         resource: quotum_params[:resource_class],
         action: quotum_params[:action].to_sym,
         period: quotum_params[:period].to_sym,
@@ -90,7 +90,8 @@ module ResourceQuotable
         :limit,
         :resource_class,
         :action,
-        :group_id
+        :group_id,
+        :group_type
       )
     end
 
@@ -100,6 +101,10 @@ module ResourceQuotable
 
     def load_quotum
       @quotum = Quotum.find(params[:id])
+    end
+
+    def default_load_quotable_group
+      quotum_params[:group_type].constantize.find(quotum_params[:group_id])
     end
 
     def check_authorization
