@@ -80,7 +80,7 @@ module ResourceQuotable
     end
 
     describe 'POST create' do
-      subject(:create) { post :create, params: { quotum: { limit: 10, period: 'daily', group_id: group.id, resource_class: 'ClassA', action: 'destroy' } }, xhr: xhr }
+      subject(:create) { post :create, params: { quotum: { limit: 10, period: 'daily', group_id: group.id, group_type: 'UserGroup', resource_class: 'ClassA', action: 'destroy' } }, xhr: xhr }
 
       let(:group) { build(:user_group) }
       let(:xhr) { false }

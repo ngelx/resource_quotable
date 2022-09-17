@@ -4,6 +4,7 @@
 #
 #  id             :integer          not null, primary key
 #  action         :integer          default("create"), not null
+#  group_type     :string           not null
 #  limit          :integer          default(1), not null
 #  period         :integer          default("any"), not null
 #  resource_class :string           not null

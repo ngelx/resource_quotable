@@ -4,6 +4,7 @@ class CreateResourceQuotableQuota < ActiveRecord::Migration[4.2] # :nodoc:
   def change
     create_table :resource_quotable_quota do |t|
       t.integer :group_id, null: false, index: true
+      t.string :group_type, null: false
       t.string :resource_class, null: false
       t.integer :action, null: false, default: 0
       t.integer :period, null: false, default: 0

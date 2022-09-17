@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2022_09_01_075514) do
 
   create_table "resource_quotable_quota", force: :cascade do |t|
     t.integer "group_id", null: false
+    t.string "group_type", null: false
     t.string "resource_class", null: false
     t.integer "action", default: 0, null: false
     t.integer "period", default: 0, null: false
@@ -34,6 +35,7 @@ ActiveRecord::Schema.define(version: 2022_09_01_075514) do
   create_table "resource_quotable_quotum_trackers", force: :cascade do |t|
     t.integer "quotum_id", null: false
     t.integer "user_id", null: false
+    t.string "user_type", null: false
     t.boolean "flag", default: false, null: false
     t.integer "counter", default: 0, null: false
     t.index ["quotum_id"], name: "index_resource_quotable_quotum_trackers_on_quotum_id"

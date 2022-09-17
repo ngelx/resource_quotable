@@ -12,8 +12,8 @@ require 'concerns/controllers/allowed_to_manage_quota_check'
 require 'kaminari'
 
 module ResourceQuotable # :nodoc:
-  mattr_accessor :user_class
-  mattr_accessor :group_class
+  mattr_accessor :users_method
+  mattr_accessor :group_method
   mattr_accessor :resources
   mattr_accessor :actions
   mattr_accessor :main_content
@@ -26,12 +26,12 @@ module ResourceQuotable # :nodoc:
     destroy: 2
   }.freeze
 
-  def self.user_class
-    @@user_class.constantize
+  def self.users_method
+    @@users_method.to_s || 'users'
   end
 
-  def self.group_class
-    @@group_class.constantize
+  def self.group_method
+    @@group_method.to_s || 'group'
   end
 
   def self.resources
