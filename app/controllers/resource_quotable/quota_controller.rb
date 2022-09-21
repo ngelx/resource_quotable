@@ -12,7 +12,7 @@ module ResourceQuotable
       @page = params[:page] || 1
       @per_page = params[:per_page] || 5
 
-      @quota = Quotum.page(@page).per(@per_page)
+      @quota = quota_scoped.page(@page).per(@per_page)
       resource_quotable_after
     end
 
@@ -100,7 +100,7 @@ module ResourceQuotable
     end
 
     def load_quotum
-      @quotum = Quotum.find(params[:id])
+      @quotum = quota_scoped.find(params[:id])
     end
 
     def default_load_quotable_group

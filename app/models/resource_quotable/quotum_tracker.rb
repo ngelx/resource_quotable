@@ -33,7 +33,7 @@ module ResourceQuotable
     scope :flagged, -> { where(flag: true) }
     scope :not_flagged, -> { where(flag: false) }
 
-    delegate :action, :resource_class, :limit, to: :quotum
+    delegate :action, :resource_class, :limit, :period, to: :quotum
 
     def increment!
       raise ResourceQuotable::QuotaLimitError if flag

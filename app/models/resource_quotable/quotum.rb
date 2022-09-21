@@ -38,5 +38,9 @@ module ResourceQuotable
       monthly: 3,
       yearly: 4
     }, _suffix: true
+
+    def to_s
+      "#{@quotum.period.to_s.capitalize} #{@quotum.action} #{@quotum.resource_class}."
+    end
   end
 end

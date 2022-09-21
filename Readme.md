@@ -79,7 +79,7 @@ Attach Quotable to model.
 
 ```ruby
 class User < ApplicationRecord
-  acts_as_quotum_trackable
+  acts_as_quota_trackable
   # ....
   belongs_to :group
   # ....
@@ -94,7 +94,65 @@ end
 ```
 
 ## Usage
+
+```ruby
+class SomeController < ApplicationController
+  # ...
+
+  def create
+    allowed_to?('SomeResource', :create)
+    # ...
+    quota_increase('SomeResource', :create)
+    # ...
+  end
+
+  # ...
+end
+```
+
+## Customizations
+
+Customize views
+
+`rails g resource_quotable:views`
+
+Customize Controllers
+
+```ruby
+class ApplicationController < ActionController::Base
+  # ...
+
+  def allowed_to?(resource, action)
+    !ResourceQuotable::ActionServices::Check(user: current_user, resource: resource, action: action)
+  end
+
+  def allowed_to_manage_quota?
+    # Customize if the current_user can access to the quota management interface
+    true
+  end
+
+  def resource_quotable_before
+    # hook before every action
+  end
+
+  def resource_quotable_after
+    # hook after every action
+  end
+
+  def load_quotable_group
+    # Customize how to retrieve the group model
+    # default: quotum_params[:group_type].constantize.find(quotum_params[:group_id])
+    scooped_groups.find(params[:quotum][:group_id])
+  end
+
+  # ...
+end
+```
+
+## API
+
 Still Working on this doc....
+
 
 ## Contributing
 
