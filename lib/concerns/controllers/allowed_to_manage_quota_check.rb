@@ -14,7 +14,7 @@ module ResourceQuotable
       end
 
       def quota_scoped
-        Quota
+        Quotum
       end
 
       def resource_quotable_before; end

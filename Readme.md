@@ -130,6 +130,11 @@ class ApplicationController < ActionController::Base
     # Customize if the current_user can access to the quota management interface
     true
   end
+  # Customize How Quotum model are retrieve/filter. Useful for scopes
+  # i.e Quotum.where(...)
+  def quota_scoped
+    Quotum
+  end
 
   def resource_quotable_before
     # hook before every action
