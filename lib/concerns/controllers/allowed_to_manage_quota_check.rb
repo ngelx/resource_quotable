@@ -7,16 +7,20 @@ module ResourceQuotable
     extend ActiveSupport::Concern
 
     included do
-      def allowed_to?(resource, action)
-        raise ResourceQuotable::QuotaLimitError if ResourceQuotable::ActionServices::Check.call(
+      def allowed_to?(action, resource)
+        !ResourceQuotable::ActionServices::Check.call(
           user: load_quotable_tracker_user,
           resource: resource,
           action: action
         )
       end
 
-      def quota_increment(resource, action)
-        allowed_to?(resource, action)
+      def quota_authorize!(action, resource)
+        raise ResourceQuotable::QuotaLimitError unless allowed_to?(action, resource)
+      end
+
+      def quota_increment!(action, resource)
+        quota_authorize!(resource, action)
         ResourceQuotable::ActionServices::Increment.call(
           user: load_quotable_tracker_user,
           resource: resource,

@@ -95,17 +95,23 @@ end
 
 ## Usage
 
+```erb
+<% if allowed_to? :create, 'Post' %>
+  <%= link_to "New", new_post_path %>
+<% end %>
+```
+
 ```ruby
-class SomeController < ApplicationController
+class PostController < ApplicationController
   # ...
 
   def new
-    allowed_to?('SomeResource', :create)
+    quota_authorize! :create, 'Post'
     # ...
   end
 
   def create
-    quota_increase('SomeResource', :create)
+    quota_increment! :create, 'Post'
     # ...
   end
 
