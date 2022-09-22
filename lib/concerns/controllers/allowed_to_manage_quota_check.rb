@@ -1,12 +1,27 @@
 # frozen_string_literal: true
 
 module ResourceQuotable
-  module AllowedToManageQuotaCheck # :nodoc:
+  # API inclusion to ApplicationController in order to allow customizations.
+  #
+  module AllowedToManageQuotaCheck
     extend ActiveSupport::Concern
 
     included do
       def allowed_to?(resource, action)
-        !ResourceQuotable::ActionServices::Check(user: current_user, resource: resource, action: action)
+        raise ResourceQuotable::QuotaLimitError if ResourceQuotable::ActionServices::Check.call(
+          user: load_quotable_tracker_user,
+          resource: resource,
+          action: action
+        )
+      end
+
+      def quota_increment(resource, action)
+        allowed_to?(resource, action)
+        ResourceQuotable::ActionServices::Increment.call(
+          user: load_quotable_tracker_user,
+          resource: resource,
+          action: action
+        )
       end
 
       def allowed_to_manage_quota?
@@ -17,10 +32,13 @@ module ResourceQuotable
         Quotum
       end
 
-      def resource_quotable_before; end
-      def resource_quotable_after; end
+      def load_quotable_tracker_user
+        current_user
+      end
 
       def load_quotable_group; end
+      def resource_quotable_before; end
+      def resource_quotable_after; end
     end
   end
 end

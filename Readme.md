@@ -99,9 +99,12 @@ end
 class SomeController < ApplicationController
   # ...
 
-  def create
+  def new
     allowed_to?('SomeResource', :create)
     # ...
+  end
+
+  def create
     quota_increase('SomeResource', :create)
     # ...
   end
@@ -122,32 +125,40 @@ Customize Controllers
 class ApplicationController < ActionController::Base
   # ...
 
-  def allowed_to?(resource, action)
-    !ResourceQuotable::ActionServices::Check(user: current_user, resource: resource, action: action)
+  # Customize how to get the current user model to track
+  # default: current_user
+  def load_quotable_tracker_user
+    # ...
   end
 
-  def allowed_to_manage_quota?
-    # Customize if the current_user can access to the quota management interface
-    true
-  end
-  # Customize How Quotum model are retrieve/filter. Useful for scopes
-  # i.e Quotum.where(...)
-  def quota_scoped
-    Quotum
-  end
-
-  def resource_quotable_before
-    # hook before every action
-  end
-
-  def resource_quotable_after
-    # hook after every action
-  end
-
+  # Customize how to retrieve the group model
+  # default: quotum_params[:group_type].constantize.find(quotum_params[:group_id])
   def load_quotable_group
-    # Customize how to retrieve the group model
-    # default: quotum_params[:group_type].constantize.find(quotum_params[:group_id])
-    scooped_groups.find(params[:quotum][:group_id])
+    # ...
+  end
+
+  # Customize if the current_user can access to the quota management interface
+  # default: true
+  def allowed_to_manage_quota?
+    # ...
+  end
+
+  # Customize How Quotum model are retrieve/filter. Useful for scopes
+  # default: Quotum
+  def quota_scoped
+    # ...
+  end
+
+  # hook before every action
+  # default: nil
+  def resource_quotable_before
+    # ...
+  end
+
+  # hook after every action
+  # default: nil
+  def resource_quotable_after
+    # ...  
   end
 
   # ...
