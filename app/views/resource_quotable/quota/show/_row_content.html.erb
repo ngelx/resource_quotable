@@ -1,0 +1,7 @@
+<td><%= quotum_tracker.id %></td>
+<td><%= link_to quotum_tracker.user.full_name, sp_app_user_path(quotum_tracker.user), remote: true, class: 'leadser_js_link_disable leadser_ujs_partial', data: { 'partial-spinner_div': '#leadser_page_content', 'url-push': true } %>
+<td><%= quotum_tracker.counter %>/<%= quotum_tracker.limit %></td>
+<td><%= quotum_tracker.flag %></td>
+
+<td class='text-right'>
+</td>

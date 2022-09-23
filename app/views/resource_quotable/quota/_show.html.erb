@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-inverse lobiable lobi_scrollable" data-unpin=false data-minimize=false data-close=false data-edit-title=false data-reload=false data-edit=false data-fullscreen=true>
+      <div class="panel-heading">
+        <div class="panel-title" style="max-width: calc(100% - 120px);">
+          <h4>Quota Details for <%= "#{@quotum.action} #{@quotum.resource_class}. Period: #{@quotum.period}" %></h4>
+        </div>
+      </div>
+
+      <div class="panel-body" >
+        <% if @quotum_trackers.empty? %>
+          <div class='row'>
+            <div class='col-md-12 text-center'>
+              <h3>No results</h3>
+            </div>
+          </div>
+        <% else %>
+          <div class='row'>
+            <div class='col-md-12'>
+              <table id='resource_quotable_table' class="table table-striped medium text-left">
+                <tbody>
+                  <tr>
+                    <th>Id</th>
+                    <th>User</th>
+                    <th>Counter</th>
+                    <th>Flag</th>
+                    <th></th>
+                  </tr>
+                  <% @quotum_trackers.each do |quotum_tracker| %>
+                    <%= render partial: 'resource_quotable/quota/show/row', locals: { quotum_tracker: quotum_tracker } %>
+                  <% end %>
+                </tbody>
+              </table>
+              <%= paginate @quotum_trackers, remote: true %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
