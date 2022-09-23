@@ -40,7 +40,7 @@ module ResourceQuotable
     }, _suffix: true
 
     def to_s
-      "#{@quotum.period.to_s.capitalize} #{@quotum.action} #{@quotum.resource_class}."
+      "#{period.to_s.capitalize} #{action} #{resource_class}."
     end
   end
 end
