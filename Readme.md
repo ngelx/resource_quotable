@@ -175,6 +175,20 @@ end
 
 Still Working on this doc....
 
+API is exposed as a services layer.
+
+```ruby
+
+# Check quota for 20 actions on resource for this user
+ResourceQuotable::ActionServices::CheckMultiple.call(user: user, resource: 'ResourceX', action: :create, amount: 20)
+
+# Reset. Probably a good idea to have a cron job that call this.
+ResourceQuotable::Reset::Any.call
+ResourceQuotable::Reset::Yearly.call
+ResourceQuotable::Reset::Monthly.call
+ResourceQuotable::Reset::Weekly.call
+ResourceQuotable::Reset::Daily.call
+```
 
 ## Contributing
 
