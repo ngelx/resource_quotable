@@ -265,6 +265,15 @@
           null,
           1,
           1,
+          1,
+          null,
+          1,
+          6,
+          null,
+          null,
+          1,
+          43,
+          null,
           null,
           null
         ]
@@ -374,14 +383,6 @@
           null,
           1,
           21,
-          null,
-          null,
-          1,
-          6,
-          null,
-          null,
-          1,
-          43,
           null,
           null,
           null
@@ -828,8 +829,60 @@
           null,
           null
         ]
+      },
+      "/resource_quotable/app/controllers/resource_quotable/quotum_trackers_controller.rb": {
+        "lines": [
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/resource_quotable/app/services/resource_quotable/quotum_tracker_services/reset.rb": {
+        "lines": [
+          null,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
       }
     },
-    "timestamp": 1663845578
+    "timestamp": 1663924999
   }
 }

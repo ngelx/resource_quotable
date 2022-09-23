@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module ResourceQuotable
-  class QuotumTrackersController < ApplicationController # :nodoc:
+  class QuotumTrackersController < ResourceQuotable::ApplicationController # :nodoc:
     layout ResourceQuotable.layout
 
     before_action :check_authorization
