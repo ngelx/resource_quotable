@@ -30,6 +30,10 @@ module ResourceQuotable
         raise ResourceQuotable::QuotaLimitError unless allowed_to?(action, resource)
       end
 
+      def quota_authorize_multiple!(action, resource, amount)
+        raise ResourceQuotable::QuotaMultiLimitError unless allowed_to_do_multi?(action, resource, amount)
+      end
+
       def quota_increment!(action, resource)
         quota_authorize!(resource, action)
         ResourceQuotable::ActionServices::Increment.call(
