@@ -56,6 +56,34 @@ module ResourceQuotable
       end
     end
 
+    describe 'increment_by!' do
+      subject(:increment_by) { tracker.increment_by!(20) }
+
+      let(:quotum) { build_stubbed(:quotum, limit: 30) }
+
+      # before { allow(quotum).to receive(:limit).and_return(10) }
+
+      describe 'inside limits' do
+        let(:tracker) { create(:quotum_tracker, quotum: quotum, counter: 1, flag: false) }
+
+        it { expect { increment_by }.to change(tracker, :counter).from(1).to(21) }
+        it { expect { increment_by }.not_to change(tracker, :flag).from(false) }
+      end
+
+      describe 'reaching limit' do
+        let(:tracker) { create(:quotum_tracker, quotum: quotum, counter: 10, flag: false) }
+
+        it { expect { increment_by }.to change(tracker, :counter).from(10).to(30) }
+        it { expect { increment_by }.to change(tracker, :flag).from(false).to(true) }
+      end
+
+      describe 'over limit' do
+        let(:tracker) { create(:quotum_tracker, quotum: quotum, counter: 11, flag: false) }
+
+        it { expect { increment_by }.to raise_error ResourceQuotable::QuotaMulitLimitError }
+      end
+    end
+
     describe 'reset!' do
       subject(:reset!) { tracker.reset! }
 

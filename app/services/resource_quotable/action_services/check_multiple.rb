@@ -14,7 +14,7 @@ module ResourceQuotable
         user.quota_for_resource_action(resource, action).each do |quotum|
           quotum_tracker = find_or_create_quotum_tracker(quotum)
 
-          return true if quotum_tracker.counter + amount > quotu.limit
+          return true if quotum_tracker.counter + amount > quotum.limit
         end
         false
       end

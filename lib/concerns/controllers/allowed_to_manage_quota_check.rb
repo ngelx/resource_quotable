@@ -43,6 +43,16 @@ module ResourceQuotable
         )
       end
 
+      def quota_increment_multiple!(action, resource, amount)
+        quota_authorize_multiple!(resource, action, amount)
+        ResourceQuotable::ActionServices::IncrementMultiple.call(
+          user: load_quotable_tracker_user,
+          resource: resource,
+          action: action,
+          amount: amount
+        )
+      end
+
       def allowed_to_manage_quota?
         true
       end

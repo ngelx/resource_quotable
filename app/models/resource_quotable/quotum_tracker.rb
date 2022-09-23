@@ -42,6 +42,13 @@ module ResourceQuotable
       update(counter: new_counter, flag: (new_counter >= limit))
     end
 
+    def increment_by!(amount)
+      new_counter = counter + amount
+      raise ResourceQuotable::QuotaMulitLimitError if new_counter > limit
+
+      update(counter: new_counter, flag: (new_counter >= limit))
+    end
+
     def reset!
       return if counter.zero?
 
