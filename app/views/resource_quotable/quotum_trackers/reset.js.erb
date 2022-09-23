@@ -1,0 +1,3 @@
+$("#quotum_tracker_<%= @quotum_tracker.id %>").replaceWith( "<%= escape_javascript render partial: 'index/row_content', locals: { quotum_tracker: @quotum_tracker } %>" );
+
+alert("Quotum Tracker #<%= @quotum_tracker.id %> updated");

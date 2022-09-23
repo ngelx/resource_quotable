@@ -102,13 +102,5 @@ module ResourceQuotable
     def load_quotum
       @quotum = quota_scoped.find(params[:id])
     end
-
-    def default_load_quotable_group
-      quotum_params[:group_type].constantize.find(quotum_params[:group_id])
-    end
-
-    def check_authorization
-      raise ResourceQuotable::AuthorizationError unless allowed_to_manage_quota?
-    end
   end
 end
