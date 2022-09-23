@@ -17,6 +17,15 @@ module ResourceQuotable
         )
       end
 
+      def allowed_to_do_multi?(action, resource, amount)
+        !ResourceQuotable::ActionServices::CheckMultiple.call(
+          user: load_quotable_tracker_user,
+          resource: resource,
+          action: action,
+          amount: amount
+        )
+      end
+
       def quota_authorize!(action, resource)
         raise ResourceQuotable::QuotaLimitError unless allowed_to?(action, resource)
       end
