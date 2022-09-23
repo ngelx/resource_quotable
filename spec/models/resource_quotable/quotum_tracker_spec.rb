@@ -80,7 +80,7 @@ module ResourceQuotable
       describe 'over limit' do
         let(:tracker) { create(:quotum_tracker, quotum: quotum, counter: 11, flag: false) }
 
-        it { expect { increment_by }.to raise_error ResourceQuotable::QuotaMulitLimitError }
+        it { expect { increment_by }.to raise_error ResourceQuotable::QuotaMultiLimitError }
       end
     end
 
