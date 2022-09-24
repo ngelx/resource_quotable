@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email       = ['ngel@protonmail.com']
   spec.homepage    = 'https://bitbucket.org/angel_arancibia/resource_quotable/src/master/'
   spec.summary     = 'Quota system for resource'
-  spec.description = 'Quota system for resource.'
+  spec.description = 'Flexible quota system for resources.'
   spec.license     = 'MIT'
   spec.required_ruby_version = '>= 2.7'
 
@@ -20,6 +20,9 @@ Gem::Specification.new do |spec|
   spec.metadata['homepage_uri'] = spec.homepage
   spec.metadata['source_code_uri'] = spec.homepage
   spec.metadata['changelog_uri'] = "#{spec.homepage}/CHANGELOG.md"
+  s.post_install_message = <<~MESSAGE
+    Please see https://bitbucket.org/angel_arancibia/resource_quotable/src/master/Changelog.md for details on how to finish the setup.
+  MESSAGE
 
   spec.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'Readme.md', 'Changelog.md']
 
