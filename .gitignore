@@ -65,3 +65,4 @@ Thumbs.db
 /spec/dummy/tmp/
 /spec/generators/tmp/
 .byebug_history
+*.gem
