@@ -1,6 +1,8 @@
 # ResourceQuotable
 A Rails quota limit gem for resources. UNDER DEVELOPMENT
 
+[![Gem Version](https://badge.fury.io/rb/resource_quotable.svg)](https://badge.fury.io/rb/resource_quotable)
+
 ## Installation
 Add this line to your application's Gemfile:
 
