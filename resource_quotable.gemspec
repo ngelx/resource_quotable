@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   spec.metadata['homepage_uri'] = spec.homepage
   spec.metadata['source_code_uri'] = spec.homepage
   spec.metadata['changelog_uri'] = "#{spec.homepage}/CHANGELOG.md"
-  s.post_install_message = <<~MESSAGE
+  spec.post_install_message = <<~MESSAGE
     Please see https://bitbucket.org/angel_arancibia/resource_quotable/src/master/Changelog.md for details on how to finish the setup.
   MESSAGE
 
