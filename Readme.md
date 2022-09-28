@@ -2,6 +2,8 @@
 A Rails quota limit gem for resources. UNDER DEVELOPMENT
 
 [![Gem Version](https://badge.fury.io/rb/resource_quotable.svg)](https://badge.fury.io/rb/resource_quotable)
+[![Maintainability](https://api.codeclimate.com/v1/badges/39eaf50966ab71353f66/maintainability)](https://codeclimate.com/github/ngelx/resource_quotable/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/39eaf50966ab71353f66/test_coverage)](https://codeclimate.com/github/ngelx/resource_quotable/test_coverage)
 
 ## Installation
 Add this line to your application's Gemfile:

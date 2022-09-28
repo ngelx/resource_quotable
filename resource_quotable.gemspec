@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.version     = ResourceQuotable::VERSION
   spec.authors     = ['Ngel']
   spec.email       = ['ngel@protonmail.com']
-  spec.homepage    = 'https://bitbucket.org/angel_arancibia/resource_quotable/src/master/'
+  spec.homepage    = 'https://github.com/ngelx/resource_quotable'
   spec.summary     = 'Quota system for resource'
   spec.description = 'Flexible quota system for resources.'
   spec.license     = 'MIT'
@@ -16,12 +16,17 @@ Gem::Specification.new do |spec|
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
   # spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
+  spec.metadata = {
+    'homepage_uri' => spec.homepage,
+    # "documentation_uri" => "https://rubydoc.info/github/heartcombo/devise",
+    'changelog_uri' => "#{spec.homepage}/blob/main/Changelog.md.md",
+    'source_code_uri' => spec.homepage,
+    'bug_tracker_uri' => "#{spec.homepage}/issues",
+    'wiki_uri' => "#{spec.homepage}/wiki"
+  }
 
-  spec.metadata['homepage_uri'] = spec.homepage
-  spec.metadata['source_code_uri'] = spec.homepage
-  spec.metadata['changelog_uri'] = "#{spec.homepage}/CHANGELOG.md"
   spec.post_install_message = <<~MESSAGE
-    Please see https://bitbucket.org/angel_arancibia/resource_quotable/src/master/Changelog.md for details on how to finish the setup.
+    Please see https://github.com/ngelx/resource_quotable/blob/master/Readme.md for details on how to finish the setup.
   MESSAGE
 
   spec.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'Readme.md', 'Changelog.md']
