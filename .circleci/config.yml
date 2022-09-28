@@ -13,9 +13,9 @@ jobs:
   test:
     docker:
       - image: cimg/ruby:2.7
-      environment:
-        RAILS_ENV: test
-        RACK_ENV: test
+      - environment:
+          RAILS_ENV: test
+          RACK_ENV: test
     executor: ruby/default
     steps:
       - checkout
@@ -36,8 +36,7 @@ jobs:
       - run: bundle exec rspec
       - run:
           name: Code Climate Test Coverage
-          command: |
-            ./cc-test-reporter format-coverage -t simplecov -o "spec/coverage/codeclimate.$CIRCLE_NODE_INDEX.json"
+          command: ./cc-test-reporter format-coverage -t simplecov -o "spec/coverage/codeclimate.$CIRCLE_NODE_INDEX.json"
       - store_artifacts:
           path: spec/coverage
 
