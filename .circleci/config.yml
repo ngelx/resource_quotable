@@ -20,7 +20,9 @@ jobs:
           name: Which bundler?
           command: bundle -v
       - run: bundle install
- 
+      - store_artifacts:
+        path: spec/coverage
+
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
