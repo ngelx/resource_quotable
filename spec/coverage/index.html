@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2022-09-23T15:09:08+00:00">2022-09-23T15:09:08+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2022-09-29T10:10:41+00:00">2022-09-29T10:10:41+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -3372,7 +3372,7 @@
 
             
 
-            <code class="ruby">      &quot;#{@quotum.period.to_s.capitalize} #{@quotum.action} #{@quotum.resource_class}.&quot;</code>
+            <code class="ruby">      &quot;#{period.to_s.capitalize} #{action} #{resource_class}.&quot;</code>
           </li>
         </div>
       
@@ -8702,7 +8702,7 @@
 
             
 
-            <code class="ruby">        quota_authorize!(resource, action)</code>
+            <code class="ruby">        quota_authorize!(action, resource)</code>
           </li>
         </div>
       
@@ -8801,7 +8801,7 @@
 
             
 
-            <code class="ruby">        quota_authorize_multiple!(resource, action, amount)</code>
+            <code class="ruby">        quota_authorize_multiple!(action, resource, amount)</code>
           </li>
         </div>
       

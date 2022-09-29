@@ -64,5 +64,6 @@ Thumbs.db
 /spec/dummy/storage/
 /spec/dummy/tmp/
 /spec/generators/tmp/
+/spec/rspec.xml
 .byebug_history
 *.gem

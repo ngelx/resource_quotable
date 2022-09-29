@@ -10,12 +10,12 @@ orbs:
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
-  test:
+  rspec:
     docker:
       - image: cimg/ruby:2.7
-      - environment:
-          RAILS_ENV: test
-          RACK_ENV: test
+    environment:
+      RAILS_ENV: test
+      RACK_ENV: test
     executor: ruby/default
     steps:
       - checkout
@@ -28,7 +28,7 @@ jobs:
       - run:
           name: Setup Code Climate test-reporter
           command: |
-          # download test reporter as a static binary
+            # download test reporter as a static binary
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
             chmod +x ./cc-test-reporter
       - run: ./cc-test-reporter before-build
@@ -39,6 +39,8 @@ jobs:
           command: ./cc-test-reporter format-coverage -t simplecov -o "spec/coverage/codeclimate.$CIRCLE_NODE_INDEX.json"
       - store_artifacts:
           path: spec/coverage
+      - store_test_results:
+          path: spec
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -46,4 +48,4 @@ workflows:
   rspec_test: # This is the name of the workflow, feel free to change it to better match your workflow.
     # Inside the workflow, you define the jobs you want to run.
     jobs:
-      - test
+      - rspec

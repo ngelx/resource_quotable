@@ -40,6 +40,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'ffaker', '~> 2.21'
   spec.add_development_dependency 'generator_spec', '~> 0.9'
   spec.add_development_dependency 'rails-controller-testing', '~> 1.0'
+  spec.add_development_dependency 'rspec_junit_formatter', '~> 0.6'
   spec.add_development_dependency 'rspec-rails', '~> 5.1'
   spec.add_development_dependency 'rubocop', '~> 1.33'
   spec.add_development_dependency 'rubocop-rails', '~> 2.15'
