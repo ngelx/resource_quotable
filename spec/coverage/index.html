@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2022-09-29T10:10:41+00:00">2022-09-29T10:10:41+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2023-06-23T06:23:44+00:00">2023-06-23T06:23:44+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,7 +23,7 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="green">
-  96.31%
+  96.32%
 </span>
 
      </span>
@@ -43,11 +43,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>379</b> relevant lines,
-    <span class="green"><b>365</b> lines covered</span> and
+    <b>380</b> relevant lines,
+    <span class="green"><b>366</b> lines covered</span> and
     <span class="red"><b>14</b> lines missed. </span>
     (<span class="green">
-  96.31%
+  96.32%
 </span>
 )
   </div>
@@ -359,11 +359,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#01ac6ab62b0bb2c95dedfe3fd1e24c1c5e4d8b32" class="src_link" title="lib/resource_quotable.rb">lib/resource_quotable.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">68</td>
-            <td class="cell--number">38</td>
-            <td class="cell--number">38</td>
+            <td class="cell--number">71</td>
+            <td class="cell--number">39</td>
+            <td class="cell--number">39</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">1.55</td>
+            <td class="cell--number">1.59</td>
             
           </tr>
         
@@ -941,14 +941,14 @@
     <span class="group_name">Engine</span>
     (<span class="covered_percent">
       <span class="green">
-  90.52%
+  90.6%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.83
+         1.84
        </span>
     </span> hits/line
     )
@@ -961,11 +961,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>116</b> relevant lines,
-    <span class="green"><b>105</b> lines covered</span> and
+    <b>117</b> relevant lines,
+    <span class="green"><b>106</b> lines covered</span> and
     <span class="red"><b>11</b> lines missed. </span>
     (<span class="green">
-  90.52%
+  90.6%
 </span>
 )
   </div>
@@ -1024,11 +1024,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#01ac6ab62b0bb2c95dedfe3fd1e24c1c5e4d8b32" class="src_link" title="lib/resource_quotable.rb">lib/resource_quotable.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">68</td>
-            <td class="cell--number">38</td>
-            <td class="cell--number">38</td>
+            <td class="cell--number">71</td>
+            <td class="cell--number">39</td>
+            <td class="cell--number">39</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">1.55</td>
+            <td class="cell--number">1.59</td>
             
           </tr>
         
@@ -8394,7 +8394,7 @@
 
             
 
-            <code class="ruby">      helper_method :allowed_to?</code>
+            <code class="ruby">      helper_method :allowed_to? if respond_to?(:helper_method)</code>
           </li>
         </div>
       
@@ -9634,8 +9634,8 @@
     
 
     <div class="t-line-summary">
-      <b>38</b> relevant lines.
-      <span class="green"><b>38</b> lines covered</span> and
+      <b>39</b> relevant lines.
+      <span class="green"><b>39</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -10357,7 +10357,7 @@
 
             
 
-            <code class="ruby">ActiveRecord::Base.include ResourceQuotable::ActsAsQuotable</code>
+            <code class="ruby">ActiveSupport.on_load(:active_record) do</code>
           </li>
         </div>
       
@@ -10368,7 +10368,7 @@
 
             
 
-            <code class="ruby">ActiveRecord::Base.include ResourceQuotable::ActsAsQuotaTrackable</code>
+            <code class="ruby">  include ResourceQuotable::ActsAsQuotable</code>
           </li>
         </div>
       
@@ -10379,18 +10379,51 @@
 
             
 
-            <code class="ruby">ActionController::Base.include ResourceQuotable::AllowedToManageQuotaCheck</code>
+            <code class="ruby">  include ResourceQuotable::ActsAsQuotaTrackable</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="68">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="68">
+            
             
 
             
 
-            <code class="ruby">ActionView::Base.include ResourceQuotable::Helper</code>
+            <code class="ruby">end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="69">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="70">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">ActiveSupport.on_load(:action_controller) { include ResourceQuotable::AllowedToManageQuotaCheck }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="71">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">ActiveSupport.on_load(:action_view) { include ResourceQuotable::Helper }</code>
           </li>
         </div>
       

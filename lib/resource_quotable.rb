@@ -62,7 +62,10 @@ module ResourceQuotable # :nodoc:
 end
 
 # Extend ActiveRecord::Base with associations
-ActiveRecord::Base.include ResourceQuotable::ActsAsQuotable
-ActiveRecord::Base.include ResourceQuotable::ActsAsQuotaTrackable
-ActionController::Base.include ResourceQuotable::AllowedToManageQuotaCheck
-ActionView::Base.include ResourceQuotable::Helper
+ActiveSupport.on_load(:active_record) do
+  include ResourceQuotable::ActsAsQuotable
+  include ResourceQuotable::ActsAsQuotaTrackable
+end
+
+ActiveSupport.on_load(:action_controller) { include ResourceQuotable::AllowedToManageQuotaCheck }
+ActiveSupport.on_load(:action_view) { include ResourceQuotable::Helper }

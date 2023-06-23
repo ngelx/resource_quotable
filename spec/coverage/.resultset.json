@@ -70,7 +70,10 @@
           1,
           1,
           1,
-          1
+          null,
+          null,
+          2,
+          2
         ]
       },
       "/resource_quotable/lib/resource_quotable/engine.rb": {
@@ -963,6 +966,6 @@
         ]
       }
     },
-    "timestamp": 1664446241
+    "timestamp": 1687501424
   }
 }

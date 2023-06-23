@@ -7,7 +7,7 @@ module ResourceQuotable
     extend ActiveSupport::Concern
 
     included do
-      helper_method :allowed_to?
+      helper_method :allowed_to? if respond_to?(:helper_method)
 
       def allowed_to?(action, resource)
         !ResourceQuotable::ActionServices::Check.call(
