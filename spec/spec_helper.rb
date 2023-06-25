@@ -18,12 +18,15 @@
 
 # NOTE: If SimpleCov starts after your application code is already loaded (via require), it won't be able to track your files and their coverage! The SimpleCov.start must be issued before any of your application code is required!
 require 'simplecov'
+require "simplecov_json_formatter"
+
+SimpleCov.formatter = SimpleCov::Formatter::JSONFormatter
+
 RSpec.configure do |config|
   if config.files_to_run.one?
     config.default_formatter = 'doc'
   else
     SimpleCov.start do
-
       add_group 'Controllers', 'app/controllers'
       add_group 'Models', 'app/models'
       add_group 'Services', 'app/services'
