@@ -6,9 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 # Specify your gem's dependencies in resource_quotable.gemspec.
 gemspec
 
-group [:development, :test] do
-  gem 'rubocop-rails'
-  gem 'rubocop-rspec'
+group :development do
   gem 'sqlite3'
 end
 
