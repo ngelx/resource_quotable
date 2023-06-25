@@ -243,6 +243,7 @@ DEPENDENCIES
   rubocop-rspec (~> 2.12)
   shoulda-matchers (~> 5.1)
   simplecov (~> 0.21)
+  simplecov_json_formatter (~> 0.1)
   sqlite3
 
 BUNDLED WITH
