@@ -239,8 +239,8 @@ DEPENDENCIES
   rspec-rails (~> 5.1)
   rspec_junit_formatter (~> 0.6)
   rubocop (~> 1.33)
-  rubocop-rails (~> 2.15)
-  rubocop-rspec (~> 2.12)
+  rubocop-rails
+  rubocop-rspec
   shoulda-matchers (~> 5.1)
   simplecov (~> 0.21)
   sqlite3
