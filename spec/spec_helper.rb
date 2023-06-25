@@ -23,7 +23,6 @@ RSpec.configure do |config|
     config.default_formatter = 'doc'
   else
     SimpleCov.start do
-      coverage_dir './spec/coverage'
 
       add_group 'Controllers', 'app/controllers'
       add_group 'Models', 'app/models'
