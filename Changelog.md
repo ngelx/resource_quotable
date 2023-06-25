@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [0.3.0] (23/6/23)
 - Added support for rails > 6
+-
 
 ## [0.2.0] (29/9/22)
 ### Changed
