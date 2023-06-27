@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.3.0 (2023-06-27)
+
+
+### Features
+
+* moved to github actions CI ([91dcfbd](https://github.com/ngelx/resource_quotable/commit/91dcfbd24f646a37dddfe41baf5be841c4d0deab))
+* Support for rails &gt; 6 ([2b0947f](https://github.com/ngelx/resource_quotable/commit/2b0947fada278ea9b8d4f6ff26f8e941d0eccf9d))
+
+
+### Bug Fixes
+
+* minor change to ci ([25307e2](https://github.com/ngelx/resource_quotable/commit/25307e29b83df9fa498393d2feeb37ec1fc72776))
+
 ## [0.3.0] (23/6/23)
 - Added support for rails > 6
 -
