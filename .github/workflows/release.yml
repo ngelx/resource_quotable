@@ -44,9 +44,9 @@ jobs:
           ./cc-test-reporter before-build
         if: ${{ steps.release.outputs.release_created }}
 
-      - name: Run tests
+      - name: Run Rspec
         run: |
-          bundle exec rspec
+          bundle exec rake
         if: ${{ steps.release.outputs.release_created }}
 
       - name: Publish code coverage
