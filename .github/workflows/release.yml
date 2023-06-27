@@ -25,6 +25,7 @@ jobs:
           bump-minor-pre-major: true
           # Path to our version file to increment
           version-file: "lib/resource_quotable/version.rb"
+          changelog-path: "Changelog.md"
 
       # Checkout code if release was created
       - uses: actions/checkout@v2
