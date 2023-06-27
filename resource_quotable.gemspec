@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   # spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
   spec.metadata = {
     'homepage_uri' => spec.homepage,
-    # "documentation_uri" => "https://rubydoc.info/github/heartcombo/devise",
+    'documentation_uri' => spec.homepage,
     'changelog_uri' => "#{spec.homepage}/blob/main/Changelog.md.md",
     'source_code_uri' => spec.homepage,
     'bug_tracker_uri' => "#{spec.homepage}/issues",
