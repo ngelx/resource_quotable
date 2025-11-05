@@ -199,12 +199,13 @@ ResourceQuotable::Reset::Daily.call
 
 ## Contributing
 
+Development environment is available in a devcontainer. You can use it to develop the gem.
+
 ```bash
-$ docker-sync start
-$ docker-compose build
-$ docker-compose run web bundle install
-$ docker-compose run web bundle rails db:setup
-$ docker-compose run web bundle rspec
+$ docker compose -f .devcontainer/compose.yaml build
+$ docker compose -f .devcontainer/compose.yaml run --rm rails-app bundle install
+$ docker compose -f .devcontainer/compose.yaml run --rm rails-app bundle rails db:setup
+$ docker compose -f .devcontainer/compose.yaml run --rm rails-app bundle rspec
 ```
 
 ## License
