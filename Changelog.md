@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 * Support for rails 7
 * Support for ruby 3.4
+* Added devcontainer for development environment
 * Breaking changes:
   * Removed support for rails < 7
 
