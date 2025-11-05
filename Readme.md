@@ -219,5 +219,7 @@ $ git commit -m "docs: add documentation"
 $ git commit -m "chore: other changes"
 ```
 
+Version are automatically bumped by the release workflow. See [Release Please](https://github.com/googleapis/release-please) for more details.
+
 ## License
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
