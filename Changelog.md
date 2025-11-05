@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.4.0](https://github.com/ngelx/resource_quotable/compare/v0.3.0...v0.4.0) (2025-11-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* Removed support for rails < 7
+
+### Features
+
+* Added Support to Rails 7 and ruby 3.4 ([7fe72af](https://github.com/ngelx/resource_quotable/commit/7fe72afdba63effab7d03bc3bb91ebd7ae5afdb8))
+
 ## 1.0.0 (2025-11-05)
 
 ### Changed
