@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
 module ResourceQuotable
-  VERSION = '1.0.0'
+  VERSION = '0.4.0'
 end
