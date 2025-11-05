@@ -32,22 +32,23 @@ Gem::Specification.new do |spec|
   spec.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'Readme.md', 'Changelog.md']
 
   spec.add_dependency 'kaminari', '~> 1.0', '>= 1.0.1'
-  spec.add_dependency 'rails', '>= 4.2', '< 7'
+  spec.add_dependency 'rails', '>= 7', '< 8'
 
-  spec.add_development_dependency 'annotate', '~> 3.2'
-  spec.add_development_dependency 'database_cleaner-active_record', '~> 2.0'
-  spec.add_development_dependency 'factory_bot_rails', '~> 6.2'
+  spec.add_development_dependency 'annotaterb', '~> 4.20'
+  spec.add_development_dependency 'database_cleaner', '~> 2.1'
+  spec.add_development_dependency 'factory_bot_rails', '~> 6.5'
   spec.add_development_dependency 'ffaker', '~> 2.21'
-  spec.add_development_dependency 'generator_spec', '~> 0.9'
+  spec.add_development_dependency 'generator_spec', '~> 0.10'
   spec.add_development_dependency 'rails-controller-testing', '~> 1.0'
   spec.add_development_dependency 'rspec_junit_formatter', '~> 0.6'
-  spec.add_development_dependency 'rspec-rails', '~> 5.1'
+  spec.add_development_dependency 'rspec-rails', '~> 7.0'
   spec.add_development_dependency 'rubocop', '~> 1.33'
   spec.add_development_dependency 'rubocop-rails', '~> 2.15'
-  spec.add_development_dependency 'rubocop-rspec', '~> 2.12'
+  # spec.add_development_dependency 'rubocop-rspec', '~> 2.12'
   spec.add_development_dependency 'shoulda-matchers', '~> 5.1'
   spec.add_development_dependency 'simplecov', '~> 0.21'
   spec.add_development_dependency 'simplecov_json_formatter', '~> 0.1'
+
 
   spec.metadata['rubygems_mfa_required'] = 'true'
 end
