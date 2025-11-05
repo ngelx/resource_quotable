@@ -208,5 +208,16 @@ $ docker compose -f .devcontainer/compose.yaml run --rm rails-app bundle rails d
 $ docker compose -f .devcontainer/compose.yaml run --rm rails-app bundle rspec
 ```
 
+The project follows conventional commit messages. See [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) for more details.
+
+```bash
+$ git commit -m "feat: add new feature"
+$ git commit -m "fix: fix bug"
+$ git commit -m "refactor: refactor code"
+$ git commit -m "test: add tests"
+$ git commit -m "docs: add documentation"
+$ git commit -m "chore: other changes"
+```
+
 ## License
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
