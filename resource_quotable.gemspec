@@ -32,7 +32,7 @@ Gem::Specification.new do |spec|
   spec.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'Readme.md', 'Changelog.md']
 
   spec.add_dependency 'kaminari', '~> 1.0', '>= 1.0.1'
-  spec.add_dependency 'rails', '>= 7', '< 8'
+  spec.add_dependency 'rails', '>= 7', '< 9'
 
   spec.add_development_dependency 'annotaterb', '~> 4.20'
   spec.add_development_dependency 'database_cleaner', '~> 2.1'
@@ -48,7 +48,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'shoulda-matchers', '~> 5.1'
   spec.add_development_dependency 'simplecov', '~> 0.21'
   spec.add_development_dependency 'simplecov_json_formatter', '~> 0.1'
-
+  spec.add_development_dependency 'sqlite3', "~> 2.1"
 
   spec.metadata['rubygems_mfa_required'] = 'true'
 end
