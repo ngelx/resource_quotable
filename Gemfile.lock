@@ -109,7 +109,7 @@ GEM
     factory_bot_rails (6.5.1)
       factory_bot (~> 6.5)
       railties (>= 6.1.0)
-    ffaker (2.21.0)
+    ffaker (2.25.0)
     generator_spec (0.10.0)
       activesupport (>= 3.0.0)
       railties (>= 3.0.0)
