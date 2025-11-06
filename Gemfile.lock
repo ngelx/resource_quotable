@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    resource_quotable (1.0.0)
+    resource_quotable (1.1.0)
       kaminari (~> 1.0, >= 1.0.1)
       rails (>= 7, < 9)
 
