@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.1.1](https://github.com/ngelx/resource_quotable/compare/v1.1.0...v1.1.1) (2025-11-06)
+
+
+### Miscellaneous Chores
+
+* release 1.1.1 ([a2beabd](https://github.com/ngelx/resource_quotable/commit/a2beabde20f97d8a16da7fb4e9c350e7c727f6b2))
+
 ## [1.1.0](https://github.com/ngelx/resource_quotable/compare/v1.0.0...v1.1.0) (2025-11-06)
 
 
