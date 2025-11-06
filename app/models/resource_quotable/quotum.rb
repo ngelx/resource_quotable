@@ -29,15 +29,15 @@ module ResourceQuotable
 
     validates :resource_class, :action, :period, :limit, presence: true
 
-    enum action: ResourceQuotable.actions, _suffix: true
+    enum :action, ResourceQuotable.actions, suffix: true
 
-    enum period: {
+    enum :period, {
       any: 0,
       daily: 1,
       weekly: 2,
       monthly: 3,
       yearly: 4
-    }, _suffix: true
+    }, suffix: true
 
     def to_s
       "#{period.to_s.capitalize} #{action} #{resource_class}."
