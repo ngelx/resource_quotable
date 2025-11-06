@@ -1,0 +1,16 @@
+config_version = "0"
+
+exclude_patterns = [
+  "**/.devcontainer/**",
+  "**/bin/**"
+]
+
+[checks]
+mode = "comment"
+
+[[source]]
+name = "default"
+default = true
+
+[[plugin]]
+name = "rubocop"
