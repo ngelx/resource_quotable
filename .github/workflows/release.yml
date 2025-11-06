@@ -40,7 +40,7 @@ jobs:
 
       - name: Setup Code Climate test-reporter
         run: |
-          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+          curl -sL https://github.com/codeclimate/test-reporter/releases/latest/download/cc-test-reporter-linux-amd64 -o ./cc-test-reporter
           chmod +x ./cc-test-reporter
           ./cc-test-reporter before-build
         if: ${{ steps.release.outputs.release_created }}
