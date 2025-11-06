@@ -4,6 +4,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.0.0](https://github.com/ngelx/resource_quotable/compare/v0.4.0...v1.0.0) (2025-11-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* version bump. Forcing new release
+
+### Features
+
+* version bump. Forcing new release ([3839216](https://github.com/ngelx/resource_quotable/commit/3839216c9ad23fc695524c133e7a3daafc390017))
+
+
+### Miscellaneous Chores
+
+* release 1.0.0 ([0c57697](https://github.com/ngelx/resource_quotable/commit/0c57697244e90aabf4d359d4003d24c9ea0d34d7))
+
 ## [0.4.0](https://github.com/ngelx/resource_quotable/compare/v0.3.0...v0.4.0) (2025-11-05)
 
 
